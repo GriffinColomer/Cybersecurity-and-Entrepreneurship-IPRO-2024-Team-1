@@ -6,7 +6,6 @@ import os
 import re
 import subprocess
 
-from selenium import webdriver
 
 
 def test_basic_options():
