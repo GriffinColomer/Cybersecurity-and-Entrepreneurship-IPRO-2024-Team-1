@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Main Page</h1>
+            <button id="logoutButton">Log Out</button>
+        </header>
+        <main>
+            <div class="modeToggle">
+                <label class="switch">
+                    <input type="checkbox" id="modeToggle" onclick="toggleMode()">
+                    <span class="slider round" id="slider"></span>
+                </label>
+                <span class="toggleLabel" id="toggleLabel">Monitoring</span>
+            </div>
+            <section id="devicesContainer">
+                <h2>Flagged Devices</h2>              
+                <p>These devices have been flagged for attention</p>
+                <div id="flaggedDevices" class="deviceCategory">
+                </div>
+                <h2>Unflagged Devices</h2>
+                <p>These devices are operating normally</p>
+                <div id="unflaggedDevices" class="deviceCategory">
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="main_page.js"></script>
+</body>
+</html>
