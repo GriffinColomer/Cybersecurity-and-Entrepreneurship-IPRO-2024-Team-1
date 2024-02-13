@@ -52,6 +52,8 @@ def test_keep_browser_open():
     find_clickable_ancestor_and_click("//*[contains(text(), 'Admin Password')]/..")
     find_clickable_ancestor_and_click("//*[contains(text(), 'Admin Password')]/..")
 
+    reset_password()
+
 
     # Locate the element containing "Admin Password"
     # admin_password_span = driver.find_element(By.XPATH, "//span[contains(text(), 'Admin Password')]")
@@ -76,9 +78,16 @@ def reset_password():
     newpass = "IPRO123"
     password_fields = driver.find_elements(By.CSS_SELECTOR, "input[type='password']")
 
-    number = 1
+    oldused = False
     for password_input in password_fields:
-        password_input.send_keys("your_password_here")
+        if not oldused:
+            password_input.send_keys(oldpass)
+            oldused = True
+            pass
+
+        password_input.send_keys(newpass)
+
+
 
 def find_clickable_ancestor_and_click(start_element_xpath):
     max_attempts = 10  # Prevents infinite loops
