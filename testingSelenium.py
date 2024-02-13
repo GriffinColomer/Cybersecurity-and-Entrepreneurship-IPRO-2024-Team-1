@@ -54,7 +54,7 @@ def test_keep_browser_open():
     options.add_experimental_option("detach", True)
 
     driver = webdriver.Chrome(options=options)
-    driver.get('http://selenium.dev')
+    driver.get('http://192.168.8.1')
 
     userInput = input("Press 1 then enter")
     while (userInput != "1"):
