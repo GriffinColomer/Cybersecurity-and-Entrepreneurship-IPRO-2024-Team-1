@@ -20,7 +20,12 @@ def arp_scan(ip):
 
     for i, (name, received) in enumerate(ans):
 
-        result[f'Device {i+1}'] = {'IP': received.psrc, 'MAC': received.hwsrc, 'Company': lookup_mac(received.hwsrc)}
+        result[f'Device {i+1}'] = {'IP': received.psrc,
+                                   'MAC': received.hwsrc,
+                                   'Company': lookup_mac(received.hwsrc),
+                                   'flagged': False,
+                                   'passwordChanged': False,
+                                   'lastPasswordChange': ''}
     return result
 
 def main():
