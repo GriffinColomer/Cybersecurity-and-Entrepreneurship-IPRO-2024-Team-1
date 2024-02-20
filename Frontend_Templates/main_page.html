@@ -10,9 +10,17 @@
     <div class="container">
         <header>
             <h1>Main Page</h1>
+            <button id="passwordVaultButton" onclick="goToPasswordVault()">Password Vault</button>
             <button id="logoutButton">Log Out</button>
         </header>
         <main>
+            <h1>Show Devices</h1>
+            <button id="showDevicesButton">Show Devices</button> 
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+
+            <div id="output"></div>
             <div class="modeToggle">
                 <label class="switch">
                     <input type="checkbox" id="modeToggle" onclick="toggleMode()">
