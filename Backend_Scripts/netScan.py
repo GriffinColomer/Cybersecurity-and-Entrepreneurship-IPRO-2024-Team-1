@@ -44,7 +44,7 @@ def arp_scan(ip):
 
 def main():
     # Creates dictionary of Ip address on network must input the range of IP to search
-    local_IP = arp_scan(get_ip() + '/24')
+    local_IP = arp_scan(get_IP() + '/24')
 
     # Creates the Json object
     json_IP = json.dumps(local_IP, indent = 3)
