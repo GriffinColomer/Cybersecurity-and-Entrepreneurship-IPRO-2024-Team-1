@@ -16,6 +16,20 @@ def get_IP():
         s.close()
     return IP
 
+def ping_device(IP):
+    url = f'http://{IP}'
+    try:
+        # Send a GET request to the IP address
+        response = requests.get(url, timeout=5)
+        # Check if the request was successful
+        if response.status_code == 200:
+            return True
+        else:
+            return False
+    except requests.exceptions.RequestException as e:
+        # Handle any exceptions that occur
+        return False
+
 def lookup_mac(mac_address):
     api_url = f"https://api.maclookup.app/v2/macs/{mac_address}/company/name"
     headers = {'X-Authentication-Token': '01hpfz52rgcmadx8fj1nk2hvbf01hpfzbn2yc9fwk95sma3s7xenjgbkij9m0nrc'}
@@ -38,8 +52,8 @@ def arp_scan(ip):
                                    'MAC': received.hwsrc,
                                    'Company': lookup_mac(received.hwsrc),
                                    'flagged': False,
-                                   'passwordChanged': False,
-                                   'lastPasswordChange': ''}
+                                   'passwordChanged': False,                                   'lastPasswordChange': '',
+                                   'Accessible': ping_device(received.psrc)}
     return result
 
 def main():
@@ -50,7 +64,7 @@ def main():
     json_IP = json.dumps(local_IP, indent = 3)
 
     # Writes json to a file
-    with open("loaclIP.json", "w") as output:
+    with open("./Backend_Scripts/localIP.json", "w") as output:
         output.write(json_IP)
 
 if __name__ == '__main__':

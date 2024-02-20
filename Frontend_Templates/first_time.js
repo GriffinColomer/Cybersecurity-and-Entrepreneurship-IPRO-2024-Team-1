@@ -1,14 +1,28 @@
-// Define a function to handle first-time setup form submission
-function handleFirstTimeSetup() {
-    document.getElementById('emailForm').addEventListener('submit', function(event) {
-        event.preventDefault(); 
-        const email = document.getElementById('emailInput').value;
-        console.log('Email submitted:', email); 
-        window.location.href = 'main_page.html';
-    });
-}
+document.getElementById("emailForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
 
-// Call the function to handle first-time setup on DOMContentLoaded event
-document.addEventListener('DOMContentLoaded', function() {
-    handleFirstTimeSetup();
+    var email = document.getElementById("emailInput").value;
+
+    // Create a FormData object and append the email to it
+    var formData = new FormData();
+    formData.append('email', email);
+
+    // Send form data to the server using AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'save_email.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log("Email saved successfully");
+            // You can add further handling here (e.g., redirect)
+        } else {
+            console.error("Error saving email");
+        }
+    };
+    xhr.send(formData);
+});
+
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+    window.location.href = "main_page.html";
 });

@@ -10,12 +10,10 @@
     <div class="container">
         <h1>Welcome to YourApp!</h1>
         <p>Please enter your email to complete the setup:</p>
-        <form id="emailForm">
-            <input type="email" id="emailInput" placeholder="Enter your email" required>
+        <form id="emailForm" method="post" action="save_email.php">
+            <input type="email" name="email" id="emailInput" placeholder="Enter your email" required>
             <button type="submit">Submit</button>
         </form>
     </div>
-
-    <script src="first_time.js"></script>
 </body>
 </html>
