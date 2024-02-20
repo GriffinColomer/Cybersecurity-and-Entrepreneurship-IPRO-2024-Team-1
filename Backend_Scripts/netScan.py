@@ -1,6 +1,20 @@
 from scapy.all import *
 import requests
+import socket
 import json
+
+def get_IP():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.settimeout(0)
+    try:
+        # doesn't even have to be reachable
+        s.connect(('10.254.254.254', 1))
+        IP = s.getsockname()[0]
+    except Exception:
+        IP = '127.0.0.1'
+    finally:
+        s.close()
+    return IP
 
 def lookup_mac(mac_address):
     api_url = f"https://api.maclookup.app/v2/macs/{mac_address}/company/name"
@@ -30,7 +44,7 @@ def arp_scan(ip):
 
 def main():
     # Creates dictionary of Ip address on network must input the range of IP to search
-    local_IP = arp_scan(read_routes()[2][4] + '/24')
+    local_IP = arp_scan(get_IP() + '/24')
 
     # Creates the Json object
     json_IP = json.dumps(local_IP, indent = 3)
