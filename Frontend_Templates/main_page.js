@@ -168,32 +168,30 @@ function goToPasswordVault() {
         if (response.ok) {
             return response.json(); // Parse the JSON response
         } else {
-            throw new Error('Failed to fetch password vault data');
+            console.warn('password_vault.json not found. Proceeding with an empty vault.');
+            return {}; // Return an empty object if the file doesn't exist yet
         }
     })
     .then(passwordVaultData => {
-        // Make an AJAX request to generate_password_vault.php
-        fetch('generate_password_vault.php', {
+        return fetch('generate_password_vault.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(passwordVaultData) // Send the fetched data to check for discrepancies
-        })
-        .then(response => {
-            if (response.ok) {
-                console.log("Password vault updated successfully");
-                // Redirect to password_vault.html after successful update
-                window.location.href = "password_vault.html";
-            } else {
-                console.error("Error updating password vault");
-            }
-        })
-        .catch(error => {
-            console.error("Error updating password vault:", error);
+            body: JSON.stringify(passwordVaultData)
         });
     })
+    .then(response => {
+        if (response.ok) {
+            console.log("Password vault updated successfully");
+            // Redirect to password_vault.html after successful update
+            window.location.href = "password_vault.html";
+        } else {
+            console.error("Error updating password vault");
+        }
+    })
     .catch(error => {
-        console.error("Error fetching password vault data:", error);
+        console.error("Error:", error);
     });
 }
+

@@ -1,7 +1,8 @@
 <?php
+
 // Define the path to the localIP.json file and password vault JSON file
-$localIPFile = '..\Backend_Scripts\localIP.json';
-$passwordVaultFile = 'password_vault.json';
+$localIPFile = "..\Backend_Scripts\localIP.json";
+$passwordVaultFile = "password_vault.json";
 
 // Function to load data from the localIP.json file
 function loadLocalIPData() {
@@ -10,6 +11,7 @@ function loadLocalIPData() {
         $jsonContent = file_get_contents($localIPFile);
         return json_decode($jsonContent, true);
     } else {
+        echo "localIP.json file not found.";
         return array(); // Return an empty array if the file doesn't exist yet
     }
 }
@@ -21,6 +23,8 @@ function loadPasswordVault() {
         $jsonContent = file_get_contents($passwordVaultFile);
         return json_decode($jsonContent, true);
     } else {
+        echo "password_vault.json file not found. Creating a new one.";
+        file_put_contents($passwordVaultFile, '[]');
         return array(); // Return an empty array if the file doesn't exist yet
     }
 }
@@ -58,4 +62,6 @@ foreach ($localIPData as $deviceName => $deviceInfo) {
 
 // Save the password vault data
 savePasswordVault($passwordVault);
+
+echo "Password vault populated successfully.";
 ?>
