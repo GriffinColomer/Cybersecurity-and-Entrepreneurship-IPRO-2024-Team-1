@@ -19,14 +19,12 @@ driver.get('http://192.168.8.1')
 sleep(1)
 potential_passwords = ["pass", "pass1", "pass2", "IPROSECURE", "IPROsecure", "am i there yet"]
 password_field = driver.find_element(By.CSS_SELECTOR, "input[type='password']")
+last_tried_password = ''
 
-def test_keep_browser_open():
+def crack_login_page():
+    global last_tried_password
     for password in potential_passwords:
         try:
-            # Refresh the login page for each attempt
-            # driver.refresh()
-            # sleep(1)
-
             # Locate the password field and login button for each attempt
 
             login_button = driver.find_element(By.XPATH, "//button[contains(text(), 'Login')]")
@@ -35,6 +33,7 @@ def test_keep_browser_open():
             password_field.clear()
             password_field.send_keys(password)
             login_button.click()
+            last_tried_password = password
 
             # Wait for the login button to disappear or any other login success indicator
             WebDriverWait(driver, 0).until(EC.invisibility_of_element(login_button))
@@ -46,35 +45,37 @@ def test_keep_browser_open():
             print("Login elements not found, checking next password or ending test.")
             break
 
-    # find_clickable_ancestor_and_click("//span[contains(text(), 'Admin Password')]")
-    # driver.find_element(By.XPATH, "//*[contains(text(), 'Admin Password')]/..")
-    #this needs to run twice lmao
-    find_clickable_ancestor_and_click("//*[contains(text(), 'Admin Password')]/..")
-    find_clickable_ancestor_and_click("//*[contains(text(), 'Admin Password')]/..")
-
-    reset_password()
+    print(f"Success with password: {last_tried_password}")
 
 
-    # Locate the element containing "Admin Password"
-    # admin_password_span = driver.find_element(By.XPATH, "//span[contains(text(), 'Admin Password')]")
+def find_pass_reset_page():
+    password_fields = driver.find_elements(By.CSS_SELECTOR, "input[type='password']")
+    found_password_fields = False
 
-    # Navigate to a higher ancestor that is expected to be clickable.
-    # This example uses `ancestor::li` to go up to the nearest <li> ancestor.
-    # Adjust the tag name based on your specific case or use '*' for any element type.
-    # clickable_ancestor = driver.find_element(By.XPATH, "//span[contains(text(), 'Admin Password')]/ancestor::li[1]")
+    # Loop until password fields are found or a maximum number of attempts is reached
+    max_attempts = 10
+    attempts = 0
+    while not found_password_fields and attempts < max_attempts:
+        find_clickable_ancestor_and_click("//*[contains(text(), 'Admin Password')]/..")
+        attempts += 1
 
-    # Now, try clicking on the found ancestor
-    # clickable_ancestor.click()
+        # Check if password fields are now visible
+        password_fields = driver.find_elements(By.CSS_SELECTOR, "input[type='password']")
+        if len(password_fields) > 0:
+            found_password_fields = True
+            WebDriverWait(driver, 1).until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "input[type='password']")))
+            reset_password()
+        else:
+            # Wait a bit before trying again
+            sleep(1)
 
-    userInput = input("Press 1 then enter to quit: ")
-    while userInput != "1":
-        pass
-
-    driver.quit()
-
+    if not found_password_fields:
+        print("Failed to find password fields after multiple attempts.")
 
 def reset_password():
-    oldpass = "IPROsecure"
+    global last_tried_password
+    sleep(0.2)
+    oldpass = last_tried_password
     newpass = "IPRO123"
     password_fields = driver.find_elements(By.CSS_SELECTOR, "input[type='password']")
 
@@ -84,8 +85,8 @@ def reset_password():
             password_input.send_keys(oldpass)
             oldused = True
             pass
-
-        password_input.send_keys(newpass)
+        else:
+            password_input.send_keys(newpass)
 
 
 
@@ -115,4 +116,13 @@ def find_clickable_ancestor_and_click(start_element_xpath):
     print("Failed to find an interactable ancestor.")
     return False
 
-test_keep_browser_open()
+
+
+
+crack_login_page()
+find_pass_reset_page()
+userInput = input("Press 1 then enter to quit: ")
+while userInput != "1":
+    pass
+
+driver.quit()
