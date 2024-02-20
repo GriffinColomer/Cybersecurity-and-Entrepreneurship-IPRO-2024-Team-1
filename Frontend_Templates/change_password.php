@@ -69,6 +69,14 @@ if (isset($localIPData[$deviceName]) && $localIPData[$deviceName]['flagged']) {
 
 // Function to generate a random password
 function generateRandomPassword($length = 12) {
-    return substr(str_replace(['+', '/', '='], '', base64_encode(random_bytes($length))), 0, $length);
+    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $count = mb_strlen($chars);
+
+    for ($i = 0, $result = ''; $i < $length; $i++) {
+        $index = rand(0, $count - 1);
+        $result .= mb_substr($chars, $index, 1);
+    }
+
+    return $result;
 }
 ?>
