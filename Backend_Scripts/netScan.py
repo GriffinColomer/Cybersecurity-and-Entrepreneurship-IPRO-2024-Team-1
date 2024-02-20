@@ -64,7 +64,7 @@ def main():
     json_IP = json.dumps(local_IP, indent = 3)
 
     # Writes json to a file
-    with open("localIP.json", "w") as output:
+    with open("./Backend_Scripts/localIP.json", "w") as output:
         output.write(json_IP)
 
 if __name__ == '__main__':
