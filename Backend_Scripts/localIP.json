@@ -1,0 +1,50 @@
+{
+   "Device 1": {
+      "IP": "192.168.8.1",
+      "MAC": "94:83:c4:2c:94:49",
+      "Company": "GL Technologies (Hong Kong) Limited",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 2": {
+      "IP": "192.168.8.134",
+      "MAC": "dc:1b:a1:43:94:0f",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 3": {
+      "IP": "192.168.8.146",
+      "MAC": "d8:3a:dd:e4:bd:a2",
+      "Company": "Raspberry Pi Trading Ltd",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 4": {
+      "IP": "192.168.8.149",
+      "MAC": "a0:78:17:b1:47:12",
+      "Company": "Apple, Inc.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 5": {
+      "IP": "192.168.8.182",
+      "MAC": "f8:ff:c2:07:2e:08",
+      "Company": "Apple, Inc.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 6": {
+      "IP": "192.168.8.229",
+      "MAC": "44:af:28:33:6b:ca",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   }
+}
