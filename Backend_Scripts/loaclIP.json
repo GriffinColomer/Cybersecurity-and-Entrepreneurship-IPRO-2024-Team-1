@@ -1,0 +1,794 @@
+{
+   "Device 1": {
+      "IP": "104.194.102.4",
+      "MAC": "b0:68:e6:63:14:45",
+      "Company": "CHONGQING FUGUI ELECTRONICS CO.,LTD.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 2": {
+      "IP": "104.194.102.6",
+      "MAC": "00:93:37:e2:e4:42",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 3": {
+      "IP": "104.194.102.3",
+      "MAC": "3c:06:30:22:a8:7a",
+      "Company": "Apple, Inc.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 4": {
+      "IP": "104.194.102.14",
+      "MAC": "54:6c:eb:ac:5f:3f",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 5": {
+      "IP": "104.194.102.16",
+      "MAC": "1c:57:dc:5d:7d:c5",
+      "Company": "Apple, Inc.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 6": {
+      "IP": "104.194.102.8",
+      "MAC": "90:78:41:57:16:e2",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 7": {
+      "IP": "104.194.102.36",
+      "MAC": "74:a6:cd:ad:5d:0b",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 8": {
+      "IP": "104.194.102.39",
+      "MAC": "f8:89:d2:e6:99:ad",
+      "Company": "CLOUD NETWORK TECHNOLOGY SINGAPORE PTE. LTD.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 9": {
+      "IP": "104.194.102.19",
+      "MAC": "5c:62:8b:2e:4f:1c",
+      "Company": "TP-Link Corporation Limited",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 10": {
+      "IP": "104.194.102.55",
+      "MAC": "4a:3a:c6:1c:42:fd",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 11": {
+      "IP": "104.194.102.57",
+      "MAC": "3a:58:ec:83:8d:86",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 12": {
+      "IP": "104.194.102.62",
+      "MAC": "9c:2f:9d:9f:80:f9",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 13": {
+      "IP": "104.194.102.63",
+      "MAC": "3c:6a:a7:c6:e8:2d",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 14": {
+      "IP": "104.194.102.52",
+      "MAC": "de:ef:3a:75:37:6b",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 15": {
+      "IP": "104.194.102.69",
+      "MAC": "12:02:be:d4:09:c6",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 16": {
+      "IP": "104.194.102.27",
+      "MAC": "f6:7d:8b:1d:c9:ba",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 17": {
+      "IP": "104.194.102.43",
+      "MAC": "b6:9f:f9:e9:c3:8a",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 18": {
+      "IP": "104.194.102.82",
+      "MAC": "18:26:49:97:d6:32",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 19": {
+      "IP": "104.194.102.40",
+      "MAC": "10:3d:1c:5e:b0:4b",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 20": {
+      "IP": "104.194.102.32",
+      "MAC": "56:01:9f:d2:27:71",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 21": {
+      "IP": "104.194.102.94",
+      "MAC": "a8:93:4a:2f:c1:93",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 22": {
+      "IP": "104.194.102.99",
+      "MAC": "e2:e1:05:2a:39:e7",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 23": {
+      "IP": "104.194.102.64",
+      "MAC": "50:41:1c:d8:6c:30",
+      "Company": "AMPAK Technology,Inc.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 24": {
+      "IP": "104.194.102.92",
+      "MAC": "f2:4e:d8:90:d3:51",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 25": {
+      "IP": "104.194.102.47",
+      "MAC": "ea:b3:80:ee:05:92",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 26": {
+      "IP": "104.194.102.35",
+      "MAC": "2e:ef:6f:42:85:12",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 27": {
+      "IP": "104.194.102.93",
+      "MAC": "ba:25:7b:5c:0c:09",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 28": {
+      "IP": "104.194.102.84",
+      "MAC": "fa:73:28:a6:63:e4",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 29": {
+      "IP": "104.194.102.38",
+      "MAC": "98:59:7a:f2:d3:de",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 30": {
+      "IP": "104.194.102.96",
+      "MAC": "5a:20:33:52:d5:c7",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 31": {
+      "IP": "104.194.102.66",
+      "MAC": "36:09:a9:5b:ac:bb",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 32": {
+      "IP": "104.194.102.74",
+      "MAC": "5e:e2:d6:0b:fd:76",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 33": {
+      "IP": "104.194.102.70",
+      "MAC": "d2:a8:a9:3a:88:c7",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 34": {
+      "IP": "104.194.102.76",
+      "MAC": "2e:c2:9a:cb:e1:dc",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 35": {
+      "IP": "104.194.102.45",
+      "MAC": "3a:68:fd:a7:c7:9e",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 36": {
+      "IP": "104.194.102.68",
+      "MAC": "44:af:28:20:4b:21",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 37": {
+      "IP": "104.194.102.98",
+      "MAC": "1e:3a:62:8d:cf:0c",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 38": {
+      "IP": "104.194.102.78",
+      "MAC": "1e:c8:52:75:7a:f1",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 39": {
+      "IP": "104.194.102.51",
+      "MAC": "ce:ee:ca:d7:85:0c",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 40": {
+      "IP": "104.194.102.2",
+      "MAC": "f6:2e:99:fe:96:62",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 41": {
+      "IP": "104.194.102.247",
+      "MAC": "44:af:28:33:6b:ca",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 42": {
+      "IP": "104.194.102.59",
+      "MAC": "00:e4:21:c9:2a:2c",
+      "Company": "Sony Interactive Entertainment Inc.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 43": {
+      "IP": "104.194.102.90",
+      "MAC": "fe:fa:23:d8:1f:52",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 44": {
+      "IP": "104.194.102.72",
+      "MAC": "5a:90:dd:59:f9:ac",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 45": {
+      "IP": "104.194.102.75",
+      "MAC": "7e:a6:89:86:ca:4d",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 46": {
+      "IP": "104.194.102.20",
+      "MAC": "74:a6:cd:a0:b0:bc",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 47": {
+      "IP": "104.194.102.71",
+      "MAC": "cc:08:fa:8d:5c:cc",
+      "Company": "Apple, Inc.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 48": {
+      "IP": "104.194.102.46",
+      "MAC": "da:b1:42:fc:03:fb",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 49": {
+      "IP": "104.194.102.56",
+      "MAC": "b0:be:83:48:d6:67",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 50": {
+      "IP": "104.194.102.60",
+      "MAC": "7a:ea:fa:fe:53:79",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 51": {
+      "IP": "104.194.102.25",
+      "MAC": "72:07:1e:42:a7:b7",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 52": {
+      "IP": "104.194.102.9",
+      "MAC": "a8:8f:d9:58:6a:da",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 53": {
+      "IP": "104.194.102.48",
+      "MAC": "90:9c:4a:cf:0a:cc",
+      "Company": "Apple, Inc.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 54": {
+      "IP": "104.194.102.5",
+      "MAC": "12:51:f5:da:84:e9",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 55": {
+      "IP": "104.194.102.61",
+      "MAC": "b2:2b:76:91:e4:f9",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 56": {
+      "IP": "104.194.102.22",
+      "MAC": "9a:fa:35:a8:67:3a",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 57": {
+      "IP": "104.194.102.65",
+      "MAC": "5a:81:6d:05:42:05",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 58": {
+      "IP": "104.194.102.54",
+      "MAC": "7a:eb:eb:e9:24:d2",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 59": {
+      "IP": "104.194.102.58",
+      "MAC": "a6:d5:42:b7:1a:15",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 60": {
+      "IP": "104.194.102.31",
+      "MAC": "de:44:42:ec:f7:35",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 61": {
+      "IP": "104.194.102.79",
+      "MAC": "ee:94:6e:a6:84:16",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 62": {
+      "IP": "104.194.102.104",
+      "MAC": "10:3d:1c:36:46:10",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 63": {
+      "IP": "104.194.102.111",
+      "MAC": "96:72:5b:fc:9f:f8",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 64": {
+      "IP": "104.194.102.105",
+      "MAC": "a0:29:42:f0:55:73",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 65": {
+      "IP": "104.194.102.113",
+      "MAC": "50:84:92:07:16:a6",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 66": {
+      "IP": "104.194.102.116",
+      "MAC": "f4:c8:8a:5f:49:39",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 67": {
+      "IP": "104.194.102.103",
+      "MAC": "02:b8:0a:60:b8:5b",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 68": {
+      "IP": "104.194.102.126",
+      "MAC": "14:ac:60:8a:df:cf",
+      "Company": "CLOUD NETWORK TECHNOLOGY SINGAPORE PTE. LTD.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 69": {
+      "IP": "104.194.102.130",
+      "MAC": "e0:d4:e8:88:96:b8",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 70": {
+      "IP": "104.194.102.129",
+      "MAC": "46:a0:23:5f:3b:83",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 71": {
+      "IP": "104.194.102.135",
+      "MAC": "60:45:bd:a6:2b:bf",
+      "Company": "Microsoft",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 72": {
+      "IP": "104.194.102.133",
+      "MAC": "be:b5:8f:21:f7:fb",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 73": {
+      "IP": "104.194.102.138",
+      "MAC": "bc:33:29:ba:2b:24",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 74": {
+      "IP": "104.194.102.149",
+      "MAC": "86:52:11:fa:ed:4c",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 75": {
+      "IP": "104.194.102.148",
+      "MAC": "4c:44:5b:81:0e:11",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 76": {
+      "IP": "104.194.102.151",
+      "MAC": "ac:89:95:29:d6:79",
+      "Company": "AzureWave Technology Inc.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 77": {
+      "IP": "104.194.102.118",
+      "MAC": "1e:f5:47:eb:4d:64",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 78": {
+      "IP": "104.194.102.120",
+      "MAC": "6e:a6:c8:3f:1b:89",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 79": {
+      "IP": "104.194.102.153",
+      "MAC": "1c:57:dc:4a:4b:34",
+      "Company": "Apple, Inc.",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 80": {
+      "IP": "104.194.102.145",
+      "MAC": "da:04:f3:41:66:16",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 81": {
+      "IP": "104.194.102.154",
+      "MAC": "9a:e3:e2:8e:0a:98",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 82": {
+      "IP": "104.194.102.158",
+      "MAC": "16:fc:77:fc:2a:da",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 83": {
+      "IP": "104.194.102.142",
+      "MAC": "b0:3c:dc:9a:ca:a4",
+      "Company": "Intel Corporate",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 84": {
+      "IP": "104.194.102.128",
+      "MAC": "7a:1c:86:98:e8:b8",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 85": {
+      "IP": "104.194.102.157",
+      "MAC": "9c:3e:53:8d:c8:ae",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 86": {
+      "IP": "104.194.102.102",
+      "MAC": "26:3d:91:49:a7:c3",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 87": {
+      "IP": "104.194.102.97",
+      "MAC": "8e:12:06:e0:d7:31",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 88": {
+      "IP": "104.194.102.139",
+      "MAC": "5a:c5:31:fc:59:ef",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 89": {
+      "IP": "104.194.102.119",
+      "MAC": "36:b2:29:0b:37:94",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 90": {
+      "IP": "104.194.102.124",
+      "MAC": "f8:4d:89:7e:a8:d8",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 91": {
+      "IP": "104.194.102.147",
+      "MAC": "8a:d4:d9:e7:08:df",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 92": {
+      "IP": "104.194.102.121",
+      "MAC": "9a:b5:b6:9f:29:07",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 93": {
+      "IP": "104.194.102.150",
+      "MAC": "fc:b3:bc:28:b0:4a",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 94": {
+      "IP": "104.194.102.140",
+      "MAC": "42:22:81:1e:82:8c",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 95": {
+      "IP": "104.194.102.155",
+      "MAC": "ba:d0:9e:8a:8e:06",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 96": {
+      "IP": "104.194.102.156",
+      "MAC": "52:05:a0:55:d8:ec",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 97": {
+      "IP": "104.194.102.115",
+      "MAC": "1a:76:2c:7d:71:37",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 98": {
+      "IP": "104.194.102.114",
+      "MAC": "0a:f2:bd:18:58:fa",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   },
+   "Device 99": {
+      "IP": "104.194.102.136",
+      "MAC": "36:fb:43:1b:bd:ef",
+      "Company": "*NO COMPANY*",
+      "flagged": false,
+      "passwordChanged": false,
+      "lastPasswordChange": ""
+   }
+}
