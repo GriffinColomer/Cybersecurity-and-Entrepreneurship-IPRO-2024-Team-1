@@ -1,6 +1,6 @@
 async function showDevices() {
-    const flaggedDevicesContainer = document.getElementById('flaggedDevices2');
-    const unflaggedDevicesContainer = document.getElementById('unflaggedDevices2');
+    const flaggedDevicesContainer = document.getElementById('flaggedDevices');
+    const unflaggedDevicesContainer = document.getElementById('unflaggedDevices');
 
     flaggedDevicesContainer.innerHTML = '';
     unflaggedDevicesContainer.innerHTML = '';

@@ -20,10 +20,14 @@ async function startDevicePopulation() {
     progressBar.style.width = '0%';
 
     try {
+        progressBar_container.style.display = 'block'; // Display progress bar
         await runNetScanScript();
         await showDevices();
     } catch (error) {
         console.error('Error populating devices:', error);
+        clearInterval(interval);
+    } finally {
+        // Hide the progress bar when finished
         progressBar.style.display = 'none';
     }
 }
@@ -44,7 +48,7 @@ async function runNetScanScript() {
 async function showDevices() {
     const flaggedDevicesContainer = document.getElementById('flaggedDevices');
     const unflaggedDevicesContainer = document.getElementById('unflaggedDevices');
-    const progressBarContainer = document.getElementById('progress-bar-container');
+    const progressBarContainer = document.getElementById('progressBar_container');
     const progressBar = document.getElementById('progress-bar');
 
     progressBar.style.width = '0%';

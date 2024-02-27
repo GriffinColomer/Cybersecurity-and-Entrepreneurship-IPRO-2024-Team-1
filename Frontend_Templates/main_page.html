@@ -7,39 +7,57 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Main Page</h1>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <h4>Welcome to the Main Page</h4>
+        </div>
+        <div class="topnav-right">
             <button id="passwordVaultButton" onclick="goToPasswordVault()">Password Vault</button>
             <button id="logoutButton">Log Out</button>
-        </header>
+        </div>
+    </nav>
+    <main>
         <main>
-            <h1>Show Devices</h1>
-            <button id="showDevicesButton">Show Devices</button> 
-            <div id="progress-bar-container">
-                <div id="progress-bar"></div>
+            <div class="container-wrapper">
+            <div class="main-container" id="main_container">
+                <div class="scan-devices-container" id="scan_devices_container">
+                    <button id="showDevicesButton">Scan for Devices</button>
+                    
+                </div>
+                <div id="progressBar_container">
+                        <div id="progress-bar"></div>
+                </div>
             </div>
-
-            <div id="output"></div>
-            <div class="modeToggle">
+            <div class="monitoring-container" id="monitoring_container">
                 <label class="switch">
                     <input type="checkbox" id="modeToggle" onclick="toggleMode()">
                     <span class="slider round" id="slider"></span>
                 </label>
                 <span class="toggleLabel" id="toggleLabel">Monitoring</span>
             </div>
-            <section id="devicesContainer">
-                <h2>Flagged Devices</h2>              
-                <p>These devices have been flagged for attention</p>
-                <div id="flaggedDevices" class="deviceCategory">
+        </div>
+            <div class="container" id="device_container">
+                <div class="deviceSections">
+                    <section id="flaggedDevicesSection">
+                        <div class="deviceCategory">
+                            <h3>Flagged Devices</h3>              
+                            <p>These devices have been flagged for attention</p>
+                            <div id="flaggedDevices"></div>
+                        </div>
+                    </section>
+                    <section id="unflaggedDevicesSection">
+                        <div class="deviceCategory">
+                            <h3>Unflagged Devices</h3>
+                            <p>These devices are operating normally</p>
+                            <div id="unflaggedDevices"></div>
+                        </div>
+                    </section>
                 </div>
-                <h2>Unflagged Devices</h2>
-                <p>These devices are operating normally</p>
-                <div id="unflaggedDevices" class="deviceCategory">
-                </div>
-            </section>
+            </div>
         </main>
-    </div>
+        
+    </main>
+    
     <script src="main_page.js"></script>
 </body>
 </html>

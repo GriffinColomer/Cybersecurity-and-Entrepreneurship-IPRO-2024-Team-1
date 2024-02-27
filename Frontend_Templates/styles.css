@@ -1,62 +1,450 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+/* Global Styles */
+
+*,
+*:before,
+*:after {
     padding: 0;
-    background-color: #f5f5f5;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-/* Styles for the main page */
+body {
+    background-color: #000000;
+}
 
+/* Login Page-Specific Styles */
+
+.background {
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+.background .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.shape:first-child {
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+
+.shape:last-child {
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+
+form {
+    height: 520px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.3); /* Adjust transparency */
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(8, 7, 16, 0.6); /* Adjust blur */
+    padding: 50px 35px;
+    transition: all 0.3s ease; /* Add transition */
+    margin: 0 auto; /* Center the container horizontally */
+    
+}
+
+form:hover {
+    transform: translate(-50%, -50%) scale(1.02); /* Scale up on hover */
+}
+
+form * {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+
+form h3 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+form h1 {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 45px;
+    text-align: center;
+}
+form p {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+input:focus {
+    border-color: #23a2f6;
+    box-shadow: 0 0 10px rgba(35, 162, 246, 0.5);
+}
+
+input:hover {
+    transform: translateY(-3px);
+}
+
+::placeholder {
+    color: #e5e5e5;
+}
+
+button {
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(8, 7, 16, 0.6);
+    transform: translateY(-3px);
+}
+
+/* Main Page-Specific Styles */
+
+
+/* Navbar Styles */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 20px; /* Adjusted padding */
+    display: flex;
+    justify-content: space-between; /* Added */
+    align-items: center; /* Added */
+}
+
+.navbar-left h4 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 24px; /* Adjusted font size */
+}
+
+.topnav-right  {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    float: right;
+}
+
+.topnav-right  button {
+    padding: 8px 16px;
+    font-size: 14px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+/* Logout Button */
+#logoutButton:hover {
+    background-color: #c0392b; /* Darker shade of red on hover */
+}
+#passwordVaultButton:hover {
+    background-color: #2980b9; /* Darker shade of blue on hover */
+}
+/* Main Container Styles */
 .container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Container Wrapper Styles */
+.container-wrapper {
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row; /* Align containers in a row */
+    justify-content: space-between; /* Center align */
+    background-color: rgba(255, 255, 255, 0.3); /* Light background color */
+    gap: 20px; /* Add gap between containers */
+}
+
+.main-container {
+    flex: 1; /* Take up remaining space */
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px; 
+}
+.monitoring-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Monitoring Button Styles */
+.modeToggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.modeToggle .switch {
+    display: inline-block; /* Ensure switch is displayed inline */
+}
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-h1 {
-    margin: 0;
-}
-
-button#logoutButton {
-    padding: 8px 16px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button#logoutButton:hover {
-    background-color: #d32f2f;
+    margin-bottom: 40px;
 }
 
 main {
-    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.modeToggle {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+h1 {
+    color: #ffffff;
+    font-size: 36px;
     margin-bottom: 20px;
 }
 
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+button:hover {
+    background-color: #00176a;
+    box-shadow: 0 0 10px rgba(8, 7, 16, 0.6);
+}
+
+/* Show Devices Button Styles */
+
+.scan-devices-container {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    margin-right: 10px; /* Add margin to separate from monitoring container */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+#showDevicesButton {
+    padding: 10px 20px; /* Add padding to the button */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    background-color: #3498db; /* Blue color */
+    color: #ffffff;
+    border: none;
+    margin-bottom: 10px; /* Add margin to bottom of the button */
+    margin-top: 0; /* Remove default margin from top */
+}
+
+#showDevicesButton:hover {
+    background-color: #2980b9; /* Darker shade of blue on hover */
+}
+
+/* Progress Bar Styles */
+.progress-bar-container {
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden; /* Hide overflow */
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #23a2f6; /* Blue color */
+    border-radius: 5px;
+    transition: width 0.3s; /* Smooth transition for width */
+}
+
+/* Device Section Styles */
+.deviceSections {
+    margin-top: 20px;
+}
+
+.deviceCategory {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.deviceCategory:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+.deviceCategory h3{
+    font-size: 30px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.deviceCategory h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px; /* Increased margin for better separation */
+}
+
+.deviceCategory p {
+    color: #ffffff;
+    margin-bottom: 24px; /* Increased margin for better separation */
+}
+
+.device {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    padding: 20px; /* Increased padding for better spacing */
+    margin-bottom: 20px; /* Increased margin for better separation */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.device h3 {
+    color: #ffffff;
+    font-size: 30px;
+    margin-bottom: 10px; /* Increased margin for better separation */
+}
+
+.device p {
+    color: #ffffff;
+    margin-bottom: 10px; /* Increased margin for better separation */
+}
+.deviceHeader {
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    border-bottom: 1px solid #ccc; /* Add a solid line at the bottom */
+
+}
+
+.device:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+.deviceDetails {
+    padding: 20px;
+    display: none;
+}
+
+.deviceDetails.show {
+    display: block;
+}
+
+/* Styles for the switch slider */
+
+/* Monitoring Container Styles */
+.monitoring-container {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px; /* Add padding for spacing */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px; /* Add border radius for rounded corners */
+    margin-right: 10px; /* Add margin to separate from monitoring container */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+
+.monitoring-container:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+
+.slider-label {
+    color: #ffffff;
+    display: block; /* Ensure it's displayed as a block */
+    margin-top: 5px; /* Adjusted margin */
+    text-align: center; /* Center-align the text */
+}
+
 .switch {
-    position: relative;
     display: inline-block;
+    position: relative;
     width: 60px;
     height: 34px;
-    margin-right: 10px;
+    border: none;
+    margin-bottom: 10px; /* Add margin to bottom of the button */
+    margin-top: 0; /* Remove default margin from top */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .slider {
@@ -67,28 +455,28 @@ main {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    transition: .4s;
+    transition: background-color 0.4s;
     border-radius: 34px;
 }
 
 .slider:before {
-    position: absolute;
     content: "";
+    position: absolute;
     height: 26px;
     width: 26px;
     left: 4px;
     bottom: 4px;
     background-color: white;
-    transition: .4s;
+    transition: transform 0.4s;
     border-radius: 50%;
 }
 
 input:checked + .slider {
-    background-color: #4CAF50; /* Green when checked */
+    background-color: #2196F3;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #4CAF50;
+    box-shadow: 0 0 1px #2196F3;
 }
 
 input:checked + .slider:before {
@@ -103,127 +491,15 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-
-h2 {
-    margin-top: 20px;
-    background-color: #f2f2f2;
-    padding: 10px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+.toggleLabel {
+    color: #333333; /* Dark text color */
 }
 
-.device {
-    background-color: #fff;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
 
-.deviceHeader {
-    padding: 10px 20px;
-    background-color: #f2f2f2;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+/* Password Vault Styling */
 
-.deviceHeader:hover {
-    background-color: #e0e0e0;
-}
+#backButton:hover {
+    background-color: #025b0a;
+    box-shadow: 0 0 10px rgba(8, 7, 16, 0.6);
 
-.deviceDetails {
-    padding: 10px 20px;
-    display: none;
-}
-
-.deviceDetails.show {
-    display: block;
-}
-
-.deviceDetails button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    border: none;
-    background-color: #4CAF50;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-.deviceDetails button:hover {
-    background-color: #45a049;
-}
-/* Rest of your styles */
-
-.deviceCategory h2 {
-    margin-top: 20px;
-    background-color: #f2f2f2;
-    padding: 10px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.deviceCategory p {
-    margin-bottom: 10px;
-    padding: 0 10px;
-}
-
-.deviceCategory {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Login page styles */
-
-.loginForm label,
-.loginForm input[type="text"],
-.loginForm input[type="password"],
-.loginForm button {
-    width: 100%;
-    display: block;
-}
-
-.loginForm label {
-    margin-bottom: 5px;
-}
-
-.loginForm input[type="text"],
-.loginForm input[type="password"] {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.loginForm button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.loginForm button:hover {
-    background-color: #45a049;
-}
-
-#progress-bar-container {
-    width: 100%;
-    height: 20px;
-    background-color: #f0f0f0;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    display: none; /* Hide progress bar initially */
-}
-
-#progress-bar {
-    height: 100%;
-    background-color: #007bff;
-    border-radius: 4px;
-    width: 0%;
-    transition: width 0.5s ease-in-out; /* Add smooth transition effect */
 }
