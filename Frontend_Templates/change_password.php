@@ -25,10 +25,11 @@ $localIPData = loadJSONData($localIPFile);
 // Load data from the password vault JSON file
 $passwordVaultData = loadJSONData($passwordVaultFile);
 
-// Get the device name from the request body
+// Get the device name and IP address from the request body
 $requestBody = file_get_contents('php://input');
 $requestData = json_decode($requestBody, true);
 $deviceName = isset($requestData['deviceName']) ? $requestData['deviceName'] : '';
+$deviceIP = isset($requestData['deviceIP']) ? $requestData['deviceIP'] : '';
 
 // Check if the device is flagged
 if (isset($localIPData[$deviceName]) && $localIPData[$deviceName]['flagged']) {
@@ -58,9 +59,12 @@ if (isset($localIPData[$deviceName]) && $localIPData[$deviceName]['flagged']) {
     }
     saveJSONData($passwordVaultFile, $passwordVaultData);
 
-    // Respond with success message
+    // Execute the Python script with the device's IP address and generated password as arguments
+    $scriptOutput = exec("sudo python changePasswordSingle.py '$deviceIP' '$randomPassword'");
+
+    // Respond with success message and script output
     http_response_code(200);
-    echo json_encode(array('message' => 'Password changed successfully'));
+    echo json_encode(array('message' => 'Password changed successfully', 'scriptOutput' => $scriptOutput));
 } else {
     // Respond with error message if the device is not flagged or does not exist
     http_response_code(400);

@@ -68,21 +68,21 @@ async function showDevices() {
             const deviceElement = document.createElement('div');
             deviceElement.classList.add('device');
             deviceElement.innerHTML = `
-                <div class="deviceHeader" onclick="toggleDeviceDetails(this)">
-                    ${deviceName}
-                    <span class="expandIcon">+</span>
-                </div>
-                <div class="deviceDetails">
-                    <p>IP: ${device.IP}</p>
-                    <p>MAC: ${device.MAC}</p>
-                    <p>Company: ${device.Company}</p>
-                    <p>Flagged: ${device.flagged ? 'Yes' : 'No'}</p>
-                    <p>Password Changed: ${device.passwordChanged ? 'Yes' : 'No'}</p>
-                    <p>Device  Accessible: ${device.Accessible ? 'Yes' : 'No'}</p>
-                    ${device.passwordChanged ? `<p>Last Password Change: ${device.lastPasswordChange}</p>` : ''}
-                    ${device.Accessible ? `<button onclick="changePassword('${deviceName}')">Change Password</button>` : ''}
-                </div>
-            `;
+    <div class="deviceHeader" onclick="toggleDeviceDetails(this)">
+        ${deviceName}
+        <span class="expandIcon">+</span>
+    </div>
+    <div class="deviceDetails">
+        <p>IP: ${device.IP}</p>
+        <p>MAC: ${device.MAC}</p>
+        <p>Company: ${device.Company}</p>
+        <p>Flagged: ${device.flagged ? 'Yes' : 'No'}</p>
+        <p>Password Changed: ${device.passwordChanged ? 'Yes' : 'No'}</p>
+        <p>Device Accessible: ${device.Accessible ? 'Yes' : 'No'}</p>
+        ${device.passwordChanged ? `<p>Last Password Change: ${device.lastPasswordChange}</p>` : ''}
+        ${device.Accessible ? `<button onclick="changePassword('${deviceName}')">Change Password</button>` : ''}
+    </div>
+`;
 
             // Add a slight delay before appending the device element
             await new Promise(resolve => setTimeout(resolve, delayBetweenDevices));
@@ -139,17 +139,18 @@ function changePassword(deviceName) {
             },
             body: JSON.stringify({ deviceName: deviceName })
         })
-        .then(response => {
-            if (response.ok) {
-                console.log("Password changed successfully");
-                // Reload the page to reflect the updated password
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Password changed successfully!');
                 location.reload();
             } else {
-                console.error("Error changing password");
+                alert('Error changing password: ' + data.error);
             }
         })
         .catch(error => {
-            console.error("Error changing password:", error);
+            console.error('Error changing password:', error);
+            alert('Error changing password. Please try again.');
         });
     }
     location.reload();
