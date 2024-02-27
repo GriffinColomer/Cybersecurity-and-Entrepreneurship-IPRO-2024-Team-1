@@ -1,7 +1,6 @@
 import requests
 import json
 import subprocess
-
 import sys
 from time import sleep
 from selenium import webdriver
@@ -10,24 +9,27 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 
-
-sleep(1)
 potential_passwords = ["pass", "pass1", "pass2", "IPROSECURE", "IPROsecure", "am i there yet"]
 password_field = ''
 
 last_tried_password = ''
 
 def init_driver():
-    options = webdriver.ChromeOptions()
-    options.add_experimental_option("detach", True)
-    driver = webdriver.Chrome(options=options)
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # Runs Chrome in headless mode.
+    chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
+    chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+
+    s = Service('/usr/bin/chromedriver')
+    driver = webdriver.Chrome(service=s, options=chrome_options)
     return driver
 
 
@@ -65,14 +67,11 @@ def init_driver():
 
 
 def attempt_login(driver, ip):
+    print("Currently attempting to log in to", ip)
     global last_tried_password
     try:
         driver.get(f'http://{ip}')
         sleep(1)
-        password_field = driver.find_element(By.CSS_SELECTOR, "input[type='password']")
-        # The rest of your code for the login attempt
-
-
         potential_passwords = ["pass", "pass1", "pass2", "IPROSECURE", "IPROsecure", "am i there yet"]
         password_field = driver.find_element(By.CSS_SELECTOR, "input[type='password']")
 
@@ -174,11 +173,13 @@ def find_clickable_ancestor_and_click(start_element_xpath):
 #pass in an ip and it will try to change the password
 driver = init_driver()
 def auto_reset_pass(ip):
+    print("Method has begun to try to reset password of ", ip)
     if attempt_login(driver, ip):
         find_pass_reset_page()
     driver.quit()
 
 auto_reset_pass('192.168.8.1')
+
 #
 # for ip in responsive_ips:
 #     if attempt_login(driver, ip):
