@@ -2,6 +2,8 @@ from scapy.all import *
 import requests
 import socket
 import json
+from bs4 import BeautifulSoup
+
 
 def get_IP():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -16,11 +18,26 @@ def get_IP():
         s.close()
     return IP
 
+def has_password_field(IP):
+    url = f'http://{IP}'
+    try:
+        response = requests.get(url, timeout=2)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            # Search for input elements with type="password"
+            if soup.find('input', {'type': 'password'}):
+                return True
+            else:
+                return False
+    except requests.exceptions.RequestException:
+        return False
+
+
 def ping_device(IP):
     url = f'http://{IP}'
     try:
         # Send a GET request to the IP address
-        response = requests.get(url, timeout=5)
+        response = requests.get(url, timeout=2)
         # Check if the request was successful
         if response.status_code == 200:
             return True
@@ -53,8 +70,10 @@ def arp_scan(ip):
                                    'Company': lookup_mac(received.hwsrc),
                                    'flagged': False,
                                    'passwordChanged': False,                                   'lastPasswordChange': '',
-                                   'Accessible': ping_device(received.psrc)}
+                                   'Accessible': ping_device(received.psrc),
+                                   'hasPasswordField': has_password_field(received.psrc) }
     return result
+
 
 def main():
     # Creates dictionary of Ip address on network must input the range of IP to search
@@ -66,6 +85,7 @@ def main():
     # Writes json to a file
     with open("localIP.json", "w") as output:
         output.write(json_IP)
+        print(json_IP)
 
 if __name__ == '__main__':
     main()
