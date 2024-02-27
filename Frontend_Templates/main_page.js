@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const showDevicesButton = document.getElementById('showDevicesButton');
 
-    showDevicesButton.addEventListener('click', startDevicePopulation); // Attach event listener
+    showDevicesButton.addEventListener('click', startDevicePopulation);
 
     const modeToggle = document.getElementById('modeToggle');
     const modeLabel = document.getElementById('toggleLabel');
@@ -20,8 +20,8 @@ async function startDevicePopulation() {
     progressBar.style.width = '0%';
 
     try {
-        await runNetScanScript(); // Run PHP script to execute the Python script
-        await showDevices(); // Fetch and populate devices
+        await runNetScanScript();
+        await showDevices();
     } catch (error) {
         console.error('Error populating devices:', error);
         progressBar.style.display = 'none';
@@ -29,8 +29,9 @@ async function startDevicePopulation() {
 }
 
 async function runNetScanScript() {
+    console.log("Trying to run Script")
     try {
-        const response = await fetch('run_script.php'); // Make a request to the PHP script
+        const response = await fetch('run_script.php'); 
         if (!response.ok) {
             console.log("Failed to Run")
             throw new Error('Failed to run netScan.py script');
@@ -46,7 +47,7 @@ async function showDevices() {
     const progressBarContainer = document.getElementById('progress-bar-container');
     const progressBar = document.getElementById('progress-bar');
 
-    progressBar.style.width = '0%'; // Reset progress bar width
+    progressBar.style.width = '0%';
 
     flaggedDevicesContainer.innerHTML = '';
     unflaggedDevicesContainer.innerHTML = '';
@@ -77,8 +78,9 @@ async function showDevices() {
                     <p>Company: ${device.Company}</p>
                     <p>Flagged: ${device.flagged ? 'Yes' : 'No'}</p>
                     <p>Password Changed: ${device.passwordChanged ? 'Yes' : 'No'}</p>
+                    <p>Device  Accessible: ${device.Accessible ? 'Yes' : 'No'}</p>
                     ${device.passwordChanged ? `<p>Last Password Change: ${device.lastPasswordChange}</p>` : ''}
-                    ${device.flagged ? `<button onclick="changePassword('${deviceName}')">Change Password</button>` : ''}
+                    ${device.Accessible ? `<button onclick="changePassword('${deviceName}')">Change Password</button>` : ''}
                 </div>
             `;
 
@@ -97,7 +99,7 @@ async function showDevices() {
             progressBar.style.width = `${progress}%`;
         }
 
-        progressBar.style.display = 'none'; // Hide progress bar after fetching and rendering devices
+        progressBar.style.display = 'none';
     } catch (error) {
         console.error('Error fetching or parsing device data:', error);
         progressBar.style.display = 'none';
