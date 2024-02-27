@@ -1,5 +1,5 @@
 <?php
-chdir("..\Backend_Scripts");
-$output = exec('sudo python netScan.py');
+chdir("../Backend_Scripts");
+$output = shell_exec('sudo python netScan.py');
 echo $output;
 ?>

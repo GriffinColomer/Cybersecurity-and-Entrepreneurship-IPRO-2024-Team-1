@@ -1,7 +1,7 @@
 <?php
 
 // Define the path to the localIP.json file and password vault JSON file
-$localIPFile = "..\Backend_Scripts\localIP.json";
+$localIPFile =  "../Backend_Scripts/localIP.json";
 $passwordVaultFile = "password_vault.json";
 
 // Function to load data from the localIP.json file
@@ -12,7 +12,7 @@ function loadLocalIPData() {
         return json_decode($jsonContent, true);
     } else {
         echo "localIP.json file not found.";
-        return array(); // Return an empty array if the file doesn't exist yet
+        return array();
     }
 }
 
