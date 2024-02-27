@@ -150,7 +150,7 @@ def find_clickable_ancestor_and_click(start_element_xpath):
     current_element_xpath = start_element_xpath
 
     # WebDriverWait(driver, 1).until(EC.invisibility_of_element(password_field))
-    while attempts < max_attempts:
+    while attempts < max_attempts: # Searches for the desired element, opening menus to search for it
         try:
             # Try finding the current element
             element = driver.find_element(By.XPATH, current_element_xpath)
