@@ -70,7 +70,7 @@ foreach ($localIPData as $deviceName => $deviceInfo) {
     }
     
     // If username is not found, use "admin" as default
-    if (!isset($username)) {
+    if (!isset($username) || $username == "") {
         $username = 'No Username';
     }
 
