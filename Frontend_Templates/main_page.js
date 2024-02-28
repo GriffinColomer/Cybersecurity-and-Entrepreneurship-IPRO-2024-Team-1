@@ -21,6 +21,7 @@ async function startDevicePopulation() {
     progressBar.style.display = 'block'; // Display progress bar
 
     try {
+        await createDatabase();
         await runNetScanScript();
         progressBar.style.width = '10%';
         await showDevices();
@@ -32,7 +33,18 @@ async function startDevicePopulation() {
         // progressBarContainer.style.display = 'none';
     }
 }
-
+async function createDatabase() {
+    try {
+        // Make a request to the PHP file to create the database
+        const response = await fetch('create_db.php');
+        if (!response.ok) {
+            throw new Error('Failed to create database');
+        }
+        console.log('Database created successfully');
+    } catch (error) {
+        throw new Error('Error creating database: ' + error.message);
+    }
+}
 async function runNetScanScript() {
     console.log("Trying to run Script")
     try {
@@ -85,6 +97,7 @@ async function showDevices() {
                 <p>Flagged: ${device.flagged ? 'Yes' : 'No'}</p>
                 <p>Password Changed: ${device.passwordChanged ? 'Yes' : 'No'}</p>
                 <p>Device Accessible: ${device.Accessible ? 'Yes' : 'No'}</p>
+                <p>Device has Password Field: ${device.hasPasswordField ? 'Yes' : 'No'}</p>
                 ${device.passwordChanged ? `<p>Last Password Change: ${device.lastPasswordChange}</p>` : ''}
                 ${device.Accessible ? `<button onclick="changePassword('${deviceName}')">Change Password</button>` : ''}
             </div>

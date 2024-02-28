@@ -3,6 +3,7 @@
 // Define the path to the localIP.json file and password vault JSON file
 $localIPFile =  "../Backend_Scripts/localIP.json";
 $passwordVaultFile = "password_vault.json";
+$DatabaseFile = "login_data.json";
 
 // Function to load data from the localIP.json file
 function loadLocalIPData() {
@@ -12,6 +13,18 @@ function loadLocalIPData() {
         return json_decode($jsonContent, true);
     } else {
         echo "localIP.json file not found.";
+        return array();
+    }
+}
+
+// Function to load the login data from the JSON file
+function loadLoginData() {
+    global $DatabaseFile;
+    if (file_exists($DatabaseFile)) {
+        $jsonContent = file_get_contents($DatabaseFile);
+        return json_decode($jsonContent, true);
+    } else {
+        echo "login_data.json file not found.";
         return array();
     }
 }
@@ -39,21 +52,38 @@ function savePasswordVault($passwordVaultData) {
 // Load data from the localIP.json file
 $localIPData = loadLocalIPData();
 
+// Load data from the login_data.json file
+$loginData = loadLoginData();
+
 // Initialize an empty password vault
 $passwordVault = array();
 
 // Populate the password vault based on data from localIP.json
 foreach ($localIPData as $deviceName => $deviceInfo) {
+    // Check if the device company exists in the login data
+    $companyName = $deviceInfo['Company'];
+    foreach ($loginData as $login) {
+        if ($login['company'] === $companyName) {
+            $username = $login['username'];
+            break;
+        }
+    }
+    
+    // If username is not found, use "admin" as default
+    if (!isset($username)) {
+        $username = 'No Username';
+    }
+
     // Check if the password has been changed
     $passwordChanged = isset($deviceInfo['passwordChanged']) ? $deviceInfo['passwordChanged'] : false;
 
     // Set the password to blank if it hasn't been changed
     $password = $passwordChanged ? $deviceInfo['password'] : '';
 
-    // Add the device to the password vault with username as "admin"
+    // Add the device to the password vault with retrieved username
     $passwordVault[$deviceName] = array(
         'Company' => $deviceInfo['Company'],
-        'Username' => 'admin',
+        'Username' => $username,
         'Password' => $password,
         'PasswordChanged' => $passwordChanged,
         'flagged' => $deviceInfo['flagged']
