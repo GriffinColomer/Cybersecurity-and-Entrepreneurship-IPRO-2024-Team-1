@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 async function startDevicePopulation() {
+    localStorage.setItem('infoDisplayed', 'true');
     const progressBar = document.getElementById('progress-bar');
     const progressBarContainer = document.getElementById('progressBar_container');
     progressBarContainer.style.display = 'block'; // Display progress bar container
@@ -22,8 +23,9 @@ async function startDevicePopulation() {
 
     try {
         await createDatabase();
+        progressBar.style.width = '5%';
         await runNetScanScript();
-        progressBar.style.width = '10%';
+        progressBar.style.width = '5%';
         await showDevices();
     } catch (error) {
         console.error('Error populating devices:', error);
@@ -177,6 +179,7 @@ function changePassword(deviceName) {
 
 function logout() {
     alert('Logged out successfully!');
+    localStorage.removeItem('infoDisplayed');
     window.location.href = 'login.html'; 
 }
 
@@ -215,4 +218,11 @@ function goToPasswordVault() {
         console.error("Error:", error);
     });
 }
+
+window.addEventListener('load', function() {
+    var infoDisplayed = localStorage.getItem('infoDisplayed');
+    if (infoDisplayed === 'true') {
+        showDevices();
+    }
+});
 

@@ -41,6 +41,7 @@ body{
     right: -30px;
     bottom: -80px;
 }
+
 form{
     height: 520px;
     width: 400px;
@@ -496,7 +497,7 @@ input:checked + .slider:before {
 
 #progress-bar {
     height: 100%;
-    background-color: #3498db; /* Color of the progress bar */
+    background-color: #146206; /* Color of the progress bar */
     width: 0%; /* Initial width of the progress bar */
     border-radius: 5px; /* Rounded corners */
     transition: width 0.3s ease; /* Smooth transition effect */
@@ -507,5 +508,26 @@ input:checked + .slider:before {
 #backButton:hover {
     background-color: #025b0a;
     box-shadow: 0 0 10px rgba(8, 7, 16, 0.6);
+}
+#passwordInput {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
 
+#passwordInput:focus {
+    border-color: #23a2f6;
+    box-shadow: 0 0 10px rgba(35, 162, 246, 0.5);
+}
+
+#passwordInput:hover {
+    transform: translateY(-3px);
 }

@@ -118,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function logout() {
     alert('Logged out successfully!');
+    localStorage.removeItem('infoDisplayed');
     window.location.href = 'login.html'; 
 }
 
