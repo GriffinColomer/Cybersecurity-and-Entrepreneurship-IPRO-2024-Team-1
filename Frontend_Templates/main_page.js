@@ -16,19 +16,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function startDevicePopulation() {
     const progressBar = document.getElementById('progress-bar');
-    progressBar.style.display = 'block';
-    progressBar.style.width = '0%';
+    const progressBarContainer = document.getElementById('progressBar_container');
+    progressBarContainer.style.display = 'block'; // Display progress bar container
+    progressBar.style.display = 'block'; // Display progress bar
 
     try {
-        progressBar_container.style.display = 'block'; // Display progress bar
         await runNetScanScript();
+        progressBar.style.width = '10%';
         await showDevices();
     } catch (error) {
         console.error('Error populating devices:', error);
         clearInterval(interval);
     } finally {
         // Hide the progress bar when finished
-        progressBar.style.display = 'none';
+        // progressBarContainer.style.display = 'none';
     }
 }
 
@@ -51,7 +52,7 @@ async function showDevices() {
     const progressBarContainer = document.getElementById('progressBar_container');
     const progressBar = document.getElementById('progress-bar');
 
-    progressBar.style.width = '0%';
+    progressBar.style.width = '10%';
 
     flaggedDevicesContainer.innerHTML = '';
     unflaggedDevicesContainer.innerHTML = '';
@@ -61,10 +62,11 @@ async function showDevices() {
         const devicesData = await response.json();
 
         let count = 0;
+        const initialProgress = 10;
         const totalDevices = Object.keys(devicesData).length;
         const delayBetweenDevices = 1000; // milliseconds
 
-        progressBarContainer.style.display = 'block';
+        progressBar.style.width = '10%'; // Reset progress to 10%
 
         for (const deviceName in devicesData) {
             const device = devicesData[deviceName];
@@ -72,21 +74,21 @@ async function showDevices() {
             const deviceElement = document.createElement('div');
             deviceElement.classList.add('device');
             deviceElement.innerHTML = `
-    <div class="deviceHeader" onclick="toggleDeviceDetails(this)">
-        ${deviceName}
-        <span class="expandIcon">+</span>
-    </div>
-    <div class="deviceDetails">
-        <p>IP: ${device.IP}</p>
-        <p>MAC: ${device.MAC}</p>
-        <p>Company: ${device.Company}</p>
-        <p>Flagged: ${device.flagged ? 'Yes' : 'No'}</p>
-        <p>Password Changed: ${device.passwordChanged ? 'Yes' : 'No'}</p>
-        <p>Device Accessible: ${device.Accessible ? 'Yes' : 'No'}</p>
-        ${device.passwordChanged ? `<p>Last Password Change: ${device.lastPasswordChange}</p>` : ''}
-        ${device.Accessible ? `<button onclick="changePassword('${deviceName}')">Change Password</button>` : ''}
-    </div>
-`;
+            <div class="deviceHeader" onclick="toggleDeviceDetails(this)">
+                ${deviceName}
+                <span class="expandIcon">+</span>
+            </div>
+            <div class="deviceDetails">
+                <p>IP: ${device.IP}</p>
+                <p>MAC: ${device.MAC}</p>
+                <p>Company: ${device.Company}</p>
+                <p>Flagged: ${device.flagged ? 'Yes' : 'No'}</p>
+                <p>Password Changed: ${device.passwordChanged ? 'Yes' : 'No'}</p>
+                <p>Device Accessible: ${device.Accessible ? 'Yes' : 'No'}</p>
+                ${device.passwordChanged ? `<p>Last Password Change: ${device.lastPasswordChange}</p>` : ''}
+                ${device.Accessible ? `<button onclick="changePassword('${deviceName}')">Change Password</button>` : ''}
+            </div>
+        `;
 
             // Add a slight delay before appending the device element
             await new Promise(resolve => setTimeout(resolve, delayBetweenDevices));
@@ -99,14 +101,13 @@ async function showDevices() {
 
             // Update progress bar
             count++;
-            const progress = (count / totalDevices) * 100;
+            const progress = initialProgress + ((count / totalDevices) * (100 - initialProgress));
             progressBar.style.width = `${progress}%`;
         }
 
-        progressBar.style.display = 'none';
+        // progressBar.style.display = 'none';
     } catch (error) {
         console.error('Error fetching or parsing device data:', error);
-        progressBar.style.display = 'none';
     }
 }
 

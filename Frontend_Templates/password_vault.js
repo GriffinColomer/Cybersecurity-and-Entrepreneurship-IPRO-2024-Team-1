@@ -115,3 +115,10 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'main_page.html'; // Redirect to main_page.html
     });
 });
+
+function logout() {
+    alert('Logged out successfully!');
+    window.location.href = 'login.html'; 
+}
+
+document.getElementById('logoutButton').addEventListener('click', logout);

@@ -1,36 +1,30 @@
 /* Global Styles */
 
-*,
+      *,
 *:before,
-*:after {
+*:after{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-
-body {
-    background-color: #000000;
+body{
+    background-color: #080710;
 }
-
-/* Login Page-Specific Styles */
-
-.background {
+.background{
     width: 430px;
     height: 520px;
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
     left: 50%;
     top: 50%;
 }
-
-.background .shape {
+.background .shape{
     height: 200px;
     width: 200px;
     position: absolute;
     border-radius: 50%;
 }
-
-.shape:first-child {
+.shape:first-child{
     background: linear-gradient(
         #1845ad,
         #23a2f6
@@ -38,8 +32,7 @@ body {
     left: -80px;
     top: -80px;
 }
-
-.shape:last-child {
+.shape:last-child{
     background: linear-gradient(
         to right,
         #ff512f,
@@ -48,22 +41,19 @@ body {
     right: -30px;
     bottom: -80px;
 }
-
-form {
+form{
     height: 520px;
     width: 400px;
-    background-color: rgba(255, 255, 255, 0.3); /* Adjust transparency */
+    background-color: rgba(255,255,255,0.13);
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
     border-radius: 10px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 20px rgba(8, 7, 16, 0.6); /* Adjust blur */
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
-    transition: all 0.3s ease; /* Add transition */
-    margin: 0 auto; /* Center the container horizontally */
-    
 }
 
 form:hover {
@@ -217,6 +207,8 @@ button:hover {
     justify-content: space-between; /* Center align */
     background-color: rgba(255, 255, 255, 0.3); /* Light background color */
     gap: 20px; /* Add gap between containers */
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .main-container {
@@ -494,7 +486,21 @@ input:checked + .slider:before {
 .toggleLabel {
     color: #333333; /* Dark text color */
 }
+#progressBar_container {
+    width: 100%;
+    height: 20px; /* Adjust height as needed */
+    background-color: #f0f0f0; /* Background color of the progress bar container */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 10px; /* Adjust margin as needed */
+}
 
+#progress-bar {
+    height: 100%;
+    background-color: #3498db; /* Color of the progress bar */
+    width: 0%; /* Initial width of the progress bar */
+    border-radius: 5px; /* Rounded corners */
+    transition: width 0.3s ease; /* Smooth transition effect */
+}
 
 /* Password Vault Styling */
 
