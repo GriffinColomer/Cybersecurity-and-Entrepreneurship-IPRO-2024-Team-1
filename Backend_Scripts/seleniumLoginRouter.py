@@ -108,7 +108,9 @@ def find_pass_reset_page():
     max_attempts = 10
     attempts = 0
     while not found_password_fields and attempts < max_attempts:
-        find_clickable_ancestor_and_click("//*[contains(text(), 'Admin Password')]/..")
+        find_clickable_ancestor_and_click("//button[text()='Security']")
+        # find_clickable_ancestor_and_click("//*[contains(text(), 'Admin Password')]/..")
+
         attempts += 1
 
         # Check if password fields are now visible
