@@ -1,6 +1,7 @@
 from sys import argv
 from random import randrange
 import datetime
+import json
 
 def pass_gen(length):
     password = ''
