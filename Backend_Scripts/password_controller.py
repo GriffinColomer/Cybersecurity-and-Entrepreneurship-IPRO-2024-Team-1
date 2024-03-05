@@ -20,7 +20,7 @@ def check_default_password(new_password):
     pass
 
 def write_password(macaddress, password):
-    with open("passwords", "a") as file:
+    with open("../Backend_Scripts/passwords", "a") as file:
         file.write(f"{macaddress}, {password}\n")
 
 def main():
