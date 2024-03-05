@@ -33,7 +33,7 @@ def device_log(macaddress):
         file.close()
     except:
         pass
-    data[macaddress] = {'date_changed': str(datetime.datetime.now())}
+    data[macaddress] = {'date_changed': datetime.datetime.now().strftime('%c')}
     json_out = json.dumps(data, indent=3)
     with open('../Backend_Scripts/deviceLog.json', 'w') as output:
         output.write(json_out)
