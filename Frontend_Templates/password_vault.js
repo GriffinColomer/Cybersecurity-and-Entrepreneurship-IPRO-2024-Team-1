@@ -61,14 +61,14 @@ document.addEventListener('click', function(event) {
                     password: newPassword
                 })
             })
-            .then(response => response.json())
-            .then(data => {
-                // Handle response data if needed
-                console.log(data);
+            .then(() => {
+                // Password change request sent, no need to wait for response
+                alert('Password change request sent successfully!');
+                location.reload();
             })
             .catch(error => {
-                console.error('Error:', error);
-                // Handle error if needed
+                console.error('Error changing password:', error);
+                alert('Error changing password. Please try again.');
             });
         }
     } else if (event.target.classList.contains('revealPasswordBtn')) {
