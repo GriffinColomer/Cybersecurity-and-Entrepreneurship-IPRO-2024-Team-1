@@ -14,11 +14,11 @@ def checkLastPasswordChange(macaddress):
         data = json.load(file)
         file.close()
     except:
-        return False
+        return "No"
     try:
         return data[macaddress]['date_changed']
     except:
-        return False
+        return "No"
 
 def get_IP():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
