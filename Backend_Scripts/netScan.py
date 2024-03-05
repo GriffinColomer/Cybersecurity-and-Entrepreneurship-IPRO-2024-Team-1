@@ -8,6 +8,18 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
+def device_log(macaddress):
+    data = {}
+    try:
+        file = open('deviceLog.json')
+        data = json.load(file)
+        file.close()
+    except:
+        pass
+    data[macaddress] = {'date_changed': str(datetime.datetime.now())}
+    json_out = json.dumps(data, indent=3)
+    with open('deviceLog.json', 'w') as output:
+        output.write(json_out)
 
 def get_IP():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -90,7 +102,7 @@ def arp_scan(ip):
                                    'MAC': received.hwsrc,
                                    'Company': lookup_mac(received.hwsrc),
                                    'flagged': False,
-                                   'passwordChanged': False,                                   'lastPasswordChange': '',
+                                   'passwordChanged': checkLastPasswordChange(received.hwsrc),                                   'lastPasswordChange': '',
                                    'Accessible': ping_device(received.psrc),
                                    'hasPasswordField': has_password_field(received.psrc) }
     return result
