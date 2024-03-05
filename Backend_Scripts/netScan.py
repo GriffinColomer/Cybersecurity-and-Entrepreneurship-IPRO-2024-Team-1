@@ -2,7 +2,11 @@ from scapy.all import *
 import requests
 import socket
 import json
-from bs4 import BeautifulSoup
+from time import sleep
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 
 
 def get_IP():
@@ -18,19 +22,36 @@ def get_IP():
         s.close()
     return IP
 
-def has_password_field(IP):
-    url = f'http://{IP}'
+def has_password_field(ip):
+    driver = init_driver()
+    print("Currently attempting to log in to", ip)
     try:
-        response = requests.get(url, timeout=2)
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.text, 'html.parser')
-            # Search for input elements with type="password"
-            if soup.find('input', {'type': 'password'}):
-                return True
-            else:
-                return False
-    except requests.exceptions.RequestException:
+        driver.get(f'http://{ip}')
+        sleep(1)
+        password_field = driver.find_element(By.CSS_SELECTOR, "input[type='password']")
+
+        if password_field:
+            print('password field found')
+            driver.quit()
+            return True
+        else:
+            print('password field not found')
+            driver.quit()
+            return False
+    except Exception as e:
+        print(f"An error occurred while attempting to log in to {ip}: {e}")
+        driver.quit()
         return False
+
+def init_driver():
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # Runs Chrome in headless mode.
+    chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
+    chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+
+    s = Service('/usr/bin/chromedriver')
+    driver = webdriver.Chrome(service=s, options=chrome_options)
+    return driver
 
 
 def ping_device(IP):
