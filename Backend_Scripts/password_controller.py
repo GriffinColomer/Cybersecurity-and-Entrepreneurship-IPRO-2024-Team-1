@@ -1,5 +1,6 @@
 from sys import argv
 from random import randrange
+import datetime
 
 def pass_gen(length):
     password = ''
@@ -23,6 +24,19 @@ def write_password(macaddress, password):
     with open("../Backend_Scripts/passwords", "a") as file:
         file.write(f"{macaddress}, {password}\n")
 
+def device_log(macaddress):
+    data = {}
+    try:
+        file = open('../Backend_Scripts/deviceLog.json')
+        data = json.load(file)
+        file.close()
+    except:
+        pass
+    data[macaddress] = {'date_changed': str(datetime.datetime.now())}
+    json_out = json.dumps(data, indent=3)
+    with open('../Backend_Scripts/deviceLog.json', 'w') as output:
+        output.write(json_out)
+
 def main():
     macaddress = argv[1]
     password = pass_gen(16)
@@ -33,6 +47,7 @@ def main():
     except:
         check_default_password(password)
     write_password(macaddress, password)  # Write the password to the "Password Manager"
+    device_log(macaddress)
 
 
 if __name__ == '__main__':
