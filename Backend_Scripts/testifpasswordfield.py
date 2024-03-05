@@ -35,8 +35,6 @@ def init_driver():
 #pass in an ip and it will try to find the password field
 driver = init_driver()
 print("Method has begun to try to reset password of ", '192.168.8.1')
-driver.quit()
-
 has_password_field(driver, '192.168.8.1')
-
+driver.quit()
 
