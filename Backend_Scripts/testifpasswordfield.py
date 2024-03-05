@@ -1,32 +1,37 @@
-import requests
-from bs4 import BeautifulSoup
 from time import sleep
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 
-
-def has_password_field(urlPassed):
-    url = f'https://iprorouter.everlong.smisc.net/#/login'
-    # url = f'http://localhost/login.htm'
-    url = urlPassed
+def has_password_field(IP, driver):
+    url = f'http://{IP}'
     try:
-        response = requests.get(url, timeout=2)
-        if response.status_code == 200:
-            sleep(1)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            # Search for input elements with type="password"
-            if soup.find('input', {'type': 'password'}):
-                print("I found apassword", url)
-                return True
-            else:
-                print("NO PASSWORD FIELD", url)
-                return False
-
-    except requests.exceptions.RequestException:
-        print("EXCEPTION with", url)
+        driver.get(url)
+        # Wait for the page to load
+        sleep(2)
+        # Check for the presence of a password input field
+        password_field = driver.find_elements(By.CSS_SELECTOR, "input[type='password']")
+        if password_field:
+            return True
+        else:
+            return False
+    except Exception as e:
+        print(f"Error: {e}")
         return False
 
-has_password_field('https://iprorouter.everlong.smisc.net/#/login')
-has_password_field('google.com')
-has_password_field('https://semantic-ui.com/examples/login.html')
-has_password_field('192.168.68.1')
-has_password_field('http://192.168.68.1')
-has_password_field('http://192.168.68.1')
+def init_driver():
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # Runs Chrome in headless mode.
+    chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
+    chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+
+    s = Service('/usr/bin/chromedriver')
+    driver = webdriver.Chrome(service=s, options=chrome_options)
+    return driver
+
+# Example usage
+driver = init_driver()
+IP = "192.168.1.1"
+print(has_password_field(IP, driver))
+driver.quit()
