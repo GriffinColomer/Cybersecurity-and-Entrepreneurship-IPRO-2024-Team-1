@@ -101,7 +101,7 @@ async function showDevices() {
                 <p>Device Accessible: ${device.Accessible ? 'Yes' : 'No'}</p>
                 <p>Device has Password Field: ${device.hasPasswordField ? 'Yes' : 'No'}</p>
                 ${device.passwordChanged ? `<p>Last Password Change: ${device.lastPasswordChange}</p>` : ''}
-                ${device.Accessible ? `<button onclick="changePassword('${deviceName}')">Change Password</button>` : ''}
+                ${device.Accessible ? `<button onclick="changePassword('${deviceName}','${device.MAC}')">Change Password</button>` : ''}
             </div>
         `;
 
@@ -149,7 +149,7 @@ function toggleDeviceDetails(header) {
 }
 
 // Function to handle changing the password for a device
-function changePassword(deviceName) {
+function changePassword(deviceName,MAC) {
     if (confirm(`Are you sure you want to change the password for ${deviceName}?`)) {
         // Send a request to the PHP script to change the password for the flagged device
         fetch('change_password.php', {
@@ -157,7 +157,7 @@ function changePassword(deviceName) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ deviceName: deviceName })
+            body: JSON.stringify({ MAC: MAC , password:""})
         })
         .then(response => response.json())
         .then(data => {

@@ -50,16 +50,26 @@ document.addEventListener('click', function(event) {
         const passwordInput = document.getElementById(`passwordInput-${deviceName}`);
         const newPassword = passwordInput.value.trim();
         if (newPassword !== '') {
-            const updatedDeviceData = {}; // Create an object to hold the updated device data
-            updatedDeviceData[deviceName] = { // Include the device name in the object
-                password: newPassword,
-                PasswordChanged: true
-            };
-            saveDeviceData(updatedDeviceData);
-            passwordInput.disabled = true; // Disable the password input field
-            event.target.textContent = 'Reveal Password'; // Change button text to "Reveal Password"
-            event.target.classList.remove('changePasswordBtn'); // Remove class to prevent further password changes
-            event.target.classList.add('revealPasswordBtn'); // Add new class for revealing password
+            const deviceMAC = event.target.dataset.deviceMAC;
+            fetch('change_password.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    MAC: deviceMAC,
+                    password: newPassword
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle response data if needed
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle error if needed
+            });
         }
     } else if (event.target.classList.contains('revealPasswordBtn')) {
         const deviceName = event.target.dataset.deviceName;
@@ -71,26 +81,26 @@ document.addEventListener('click', function(event) {
 });
 
 
-function saveDeviceData(data) {
-    // Implement saving the updated device data to the server
-    fetch('save_passwords.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => {
-        if (response.ok) {
-            console.log("Device data updated successfully");
-        } else {
-            console.error("Error updating device data");
-        }
-    })
-    .catch(error => {
-        console.error("Error updating device data:", error);
-    });
-}
+// function saveDeviceData(data) {
+//     // Implement saving the updated device data to the server
+//     fetch('save_passwords.php', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(data)
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             console.log("Device data updated successfully");
+//         } else {
+//             console.error("Error updating device data");
+//         }
+//     })
+//     .catch(error => {
+//         console.error("Error updating device data:", error);
+//     });
+// }
 
 function toggleDeviceDetails(event) {
     const deviceHeader = event.target.closest('.deviceHeader');
