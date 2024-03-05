@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.options import Options
 
 def checkLastPasswordChange(macaddress):
     try:
-        file = open('../Backend_Devices/deviceLog.json')
+        file = open('../Backend_Scripts/deviceLog.json')
         data = json.load(file)
         file.close()
     except:
