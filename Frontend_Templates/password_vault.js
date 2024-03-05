@@ -25,7 +25,7 @@ async function showDevices() {
                     <p>User: ${device.Username}</p>
                     ${device.Password !== '' ? `<p>Password: ${device.Password}</p>` : `
                         <input type="text" placeholder="Enter password" id="passwordInput-${deviceName}">
-                        <button class="changePasswordBtn" data-device-name="${deviceName}">Change Password</button>
+                        <button class="changePasswordBtn" data-device-name="${deviceName}" data-device-mac="${device.MAC}">Change Password</button>
                     `}
                 </div>
             `;
@@ -47,10 +47,10 @@ async function showDevices() {
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('changePasswordBtn')) {
         const deviceName = event.target.dataset.deviceName;
+        const deviceMAC = event.target.dataset.deviceMac;
         const passwordInput = document.getElementById(`passwordInput-${deviceName}`);
-        const newPassword = passwordInput.value.trim();
+        const newPassword = passwordInput.value.trim()
         if (newPassword !== '') {
-            const deviceMAC = event.target.dataset.deviceMAC;
             fetch('change_password.php', {
                 method: 'POST',
                 headers: {
