@@ -23,6 +23,7 @@ async function showDevices() {
                 <div class="deviceDetails">
                     <p>Company: ${device.Company}</p>
                     <p>User: ${device.Username}</p>
+                    <p>Default Password: ${device.defaultPassword}</p>
                     ${device.Password !== '' ? `<p>Password: ${device.Password}</p>` : `
                         <input type="text" placeholder="Enter password" id="passwordInput-${deviceName}">
                         <button class="changePasswordBtn" data-device-name="${deviceName}" data-device-mac="${device.MAC}">Change Password</button>

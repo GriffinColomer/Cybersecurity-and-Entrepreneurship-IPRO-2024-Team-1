@@ -4,6 +4,28 @@
 $localIPFile =  "../Backend_Scripts/localIP.json";
 $passwordVaultFile = "password_vault.json";
 $DatabaseFile = "login_data.json";
+$passwordFile = "../Backend_Scripts/passwords";
+
+// Function to read MAC addresses and passwords from a file
+function readPasswordsFromFile($filename) {
+    $macPasswords = [];
+    $file = fopen($filename, "r");
+    if ($file) {
+        while (($line = fgets($file)) !== false) {
+            $parts = explode(",", $line);
+            if (count($parts) == 2) {
+                $macPassword = explode(",", $line);
+                $macAddress = trim($macPassword[0]);
+                $password = trim($macPassword[1]);
+                $macPasswords[$macAddress] = $password;
+            }
+        }
+        fclose($file);
+    } else {
+        echo "Error reading file.";
+    }
+    return $macPasswords;
+}
 
 // Function to load data from the localIP.json file
 function loadLocalIPData() {
@@ -58,6 +80,10 @@ $loginData = loadLoginData();
 // Initialize an empty password vault
 $passwordVault = array();
 
+
+//Get MAC address's and passwords
+$macPasswords = readPasswordsFromFile($passwordFile);
+print_r($macPasswords);
 // Populate the password vault based on data from localIP.json
 foreach ($localIPData as $deviceName => $deviceInfo) {
     // Check if the device company exists in the login data
@@ -65,7 +91,7 @@ foreach ($localIPData as $deviceName => $deviceInfo) {
     foreach ($loginData as $login) {
         if ($login['company'] === $companyName) {
             $username = $login['username'];
-            $password = $login['password'];
+            $defaultPassword = $login['password'];
             break;
         }
     }
@@ -77,11 +103,19 @@ foreach ($localIPData as $deviceName => $deviceInfo) {
 
     // Check if the password has been changed
     $passwordChanged = isset($deviceInfo['passwordChanged']) ? $deviceInfo['passwordChanged'] : false;
-
+    
+    // Check if the MAC address exists in the password file
+    if (array_key_exists($deviceInfo['MAC'], $macPasswords)) {
+        $password = $macPasswords[$deviceInfo['MAC']];
+    }else{
+        // $password = "";
+    }
 
     // Add the device to the password vault with retrieved username
     $passwordVault[$deviceName] = array(
         'Company' => $deviceInfo['Company'],
+        'MAC' => $deviceInfo['MAC'],
+        'defaultPassword' => $defaultPassword,
         'Username' => $username,
         'Password' => $password,
         'PasswordChanged' => $passwordChanged,
