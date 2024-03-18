@@ -96,16 +96,20 @@ def arp_scan(ip):
     result = {}
 
     for i, (name, received) in enumerate(ans):
-
+        passwordChanged = checkLastPasswordChange(received.hwsrc)
+        if (passwordChanged == 'No'):
+            lasPasswordChange = ''
+        else:
+            lasPasswordChange = passwordChanged
+            passwordChanged = 'Yes'
         result[f'Device {i+1}'] = {'IP': received.psrc,
                                    'MAC': received.hwsrc,
                                    'Company': lookup_mac(received.hwsrc),
                                    'flagged': False,
-                                   'passwordChanged': checkLastPasswordChange(received.hwsrc),                                   'lastPasswordChange': '',
+                                   'passwordChanged': passwordChanged,                                   'lastPasswordChange': lasPasswordChange,
                                    'Accessible': ping_device(received.psrc),
                                    'hasPasswordField': has_password_field(received.psrc) }
     return result
-
 
 def main():
     # Creates dictionary of Ip address on network must input the range of IP to search

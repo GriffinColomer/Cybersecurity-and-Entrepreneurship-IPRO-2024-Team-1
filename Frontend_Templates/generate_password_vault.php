@@ -65,6 +65,7 @@ foreach ($localIPData as $deviceName => $deviceInfo) {
     foreach ($loginData as $login) {
         if ($login['company'] === $companyName) {
             $username = $login['username'];
+            $password = $login['password'];
             break;
         }
     }
@@ -77,8 +78,6 @@ foreach ($localIPData as $deviceName => $deviceInfo) {
     // Check if the password has been changed
     $passwordChanged = isset($deviceInfo['passwordChanged']) ? $deviceInfo['passwordChanged'] : false;
 
-    // Set the password to blank if it hasn't been changed
-    $password = $passwordChanged ? $deviceInfo['password'] : '';
 
     // Add the device to the password vault with retrieved username
     $passwordVault[$deviceName] = array(
