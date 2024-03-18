@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #080710;
+    background-color: #0c0a1c;
 }
 .background{
     width: 430px;
@@ -154,6 +154,14 @@ button:hover {
     display: flex;
     justify-content: space-between; /* Added */
     align-items: center; /* Added */
+    --rebecca-purple: hsl(270, 60%, 15%);
+  background-image: linear-gradient(
+    to bottom right, 
+    hsla(203, 92%, 35.5%, 0.25), 
+    var(--rebecca-purple), 
+    hsla(27.6, 87.1%, 35.7%, 0.25)
+  );
+  background-color: var(--rebecca-purple);
 }
 
 .navbar-left h4 {
