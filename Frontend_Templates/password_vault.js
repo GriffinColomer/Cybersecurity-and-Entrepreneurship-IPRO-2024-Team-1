@@ -24,11 +24,21 @@ async function showDevices() {
                     <p>Company: ${device.Company}</p>
                     <p>User: ${device.Username}</p>
                     <p>Default Password: ${device.defaultPassword}</p>
-                    ${device.Password !== '' ? `<p>Password: ${device.Password}</p>` : `
-                        <input type="text" placeholder="Enter password" id="passwordInput-${deviceName}">
+                    ${device.Password !== '' ? `
+                        <div id="password-${deviceName}-container">
+                            <p>Password: 
+                                <span id="password-${deviceName}-hidden">${'*'.repeat(device.Password.length)}</span>
+                                <span id="password-${deviceName}-reveal" style="display: none">${device.Password}</span>
+                                <button class="revealPasswordBtn" data-device-name="${deviceName}">
+                                    <i class="bi bi-eye-slash" style="font-size: 1rem;"></i>
+                                </button>
+                            </p>
+                        </div>
+                    ` : `
+                        <input type="password" placeholder="Enter password" id="passwordInput-${deviceName}">
                         <button class="changePasswordBtn" data-device-name="${deviceName}" data-device-mac="${device.MAC}">Change Password</button>
                     `}
-                </div>
+            </div>
             `;
 
             if (device.flagged) {
@@ -47,11 +57,14 @@ async function showDevices() {
 
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('changePasswordBtn')) {
+        // Handle change password button click
         const deviceName = event.target.dataset.deviceName;
         const deviceMAC = event.target.dataset.deviceMac;
         const passwordInput = document.getElementById(`passwordInput-${deviceName}`);
-        const newPassword = passwordInput.value.trim()
+        const newPassword = passwordInput.value.trim();
+        
         if (newPassword !== '') {
+            // Send password change request
             fetch('change_password.php', {
                 method: 'POST',
                 headers: {
@@ -63,7 +76,7 @@ document.addEventListener('click', function(event) {
                 })
             })
             .then(() => {
-                // Password change request sent, no need to wait for response
+                // Password change request sent, reload the page
                 alert('Password change request sent successfully!');
                 location.reload();
             })
@@ -72,14 +85,30 @@ document.addEventListener('click', function(event) {
                 alert('Error changing password. Please try again.');
             });
         }
-    } else if (event.target.classList.contains('revealPasswordBtn')) {
-        const deviceName = event.target.dataset.deviceName;
-        const passwordElement = document.getElementById(`password-${deviceName}`);
-        const hashedPassword = passwordElement.dataset.hashedPassword;
-        passwordElement.textContent = hashedPassword; // Display hashed password
-        event.target.style.display = 'none'; // Hide the "Reveal Password" button
+    } else if (event.target.classList.contains('revealPasswordBtn') || event.target.parentElement.classList.contains('revealPasswordBtn')) {
+        // Check if the click target is the button or its parent (which might be the icon)
+        const button = event.target.classList.contains('revealPasswordBtn') ? event.target : event.target.parentElement;
+        const deviceName = button.dataset.deviceName;
+        const passwordHidden = document.getElementById(`password-${deviceName}-hidden`);
+        const passwordReveal = document.getElementById(`password-${deviceName}-reveal`);
+        const revealButtonIcon = button.querySelector('i.bi');
+
+        if (passwordHidden.style.display === 'none' || passwordHidden.style.display === '') {
+            // Password is hidden, reveal it
+            passwordHidden.style.display = 'inline';
+            passwordReveal.style.display = 'none';
+            revealButtonIcon.classList.remove('bi-eye');
+            revealButtonIcon.classList.add('bi-eye-slash');
+        } else {
+            // Password is revealed, hide it
+            passwordHidden.style.display = 'none';
+            passwordReveal.style.display = 'inline-block';
+            revealButtonIcon.classList.remove('bi-eye-slash');
+            revealButtonIcon.classList.add('bi-eye');
+        }
     }
 });
+
 
 
 // function saveDeviceData(data) {

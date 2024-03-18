@@ -1,6 +1,6 @@
 /* Global Styles */
 
-      *,
+*,
 *:before,
 *:after{
     padding: 0;
@@ -277,7 +277,7 @@ button:hover {
     box-shadow: 0 0 10px rgba(8, 7, 16, 0.6);
 }
 
-/* Show Devices Button Styles */
+/* Show Ds Button Styles */
 
 .scan-devices-container {
     background-color: rgba(255, 255, 255, 0.2);
@@ -511,6 +511,8 @@ input:checked + .slider:before {
     transition: width 0.3s ease; /* Smooth transition effect */
 }
 
+
+
 /* Password Vault Styling */
 
 #backButton:hover {
@@ -538,4 +540,16 @@ input:checked + .slider:before {
 
 #passwordInput:hover {
     transform: translateY(-3px);
+}
+
+.revealPasswordBtn {
+    background: none;
+    border: none;
+    display: inline-block;
+    margin: 0;
+     padding: 0;
+    cursor: pointer;
+    width: 16px; /* Set the width to match the icon */
+    height: 17px; /* Set the height to match the icon */
+    vertical-align: top; /* or 'top' depending on the desired alignment */
 }
