@@ -108,7 +108,7 @@ foreach ($localIPData as $deviceName => $deviceInfo) {
     if (array_key_exists($deviceInfo['MAC'], $macPasswords)) {
         $password = $macPasswords[$deviceInfo['MAC']];
     }else{
-        // $password = "";
+        $password = "";
     }
 
     // Add the device to the password vault with retrieved username

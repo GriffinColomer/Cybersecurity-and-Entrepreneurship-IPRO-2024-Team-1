@@ -22,8 +22,21 @@ def check_default_password(new_password):
     pass
 
 def write_password(macaddress, password):
-    with open("../Backend_Scripts/passwords", "a") as file:
-        file.write(f"{macaddress}, {password}\n")
+    updated = False
+    with open("../Backend_Scripts/passwords", "r") as file:
+        lines = file.readlines()
+
+    with open("../Backend_Scripts/passwords", "w") as file:
+        for line in lines:
+            parts = line.strip().split(", ")
+            if parts[0] == macaddress:
+                file.write(f"{macaddress}, {password}\n")
+                updated = True
+            else:
+                file.write(line)
+        
+        if not updated:
+            file.write(f"{macaddress}, {password}\n")
 
 def device_log(macaddress):
     data = {}
@@ -45,10 +58,12 @@ def main():
     try:
         if argv[2] != '':
             change_old_password(argv[2], password)
+            # password = argv[2]
     except:
         check_default_password(password)
     write_password(macaddress, password)  # Write the password to the "Password Manager"
     device_log(macaddress)
+
 
 
 if __name__ == '__main__':

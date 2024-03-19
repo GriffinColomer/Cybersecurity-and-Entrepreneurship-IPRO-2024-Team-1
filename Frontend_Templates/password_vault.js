@@ -109,29 +109,6 @@ document.addEventListener('click', function(event) {
     }
 });
 
-
-
-// function saveDeviceData(data) {
-//     // Implement saving the updated device data to the server
-//     fetch('save_passwords.php', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-//     })
-//     .then(response => {
-//         if (response.ok) {
-//             console.log("Device data updated successfully");
-//         } else {
-//             console.error("Error updating device data");
-//         }
-//     })
-//     .catch(error => {
-//         console.error("Error updating device data:", error);
-//     });
-// }
-
 function toggleDeviceDetails(event) {
     const deviceHeader = event.target.closest('.deviceHeader');
     if (!deviceHeader) return; // If clicked element is not a device header, exit function
@@ -161,5 +138,41 @@ function logout() {
     localStorage.removeItem('infoDisplayed');
     window.location.href = 'login.html'; 
 }
+function loadPasswordVault() {
+    // Make an AJAX request to fetch the latest password vault data
+    fetch('password_vault.json')
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.warn('password_vault.json not found. Proceeding with an empty vault.');
+            return {}; // Return an empty object if the file doesn't exist yet
+        }
+    })
+    .then(passwordVaultData => {
+        return fetch('generate_password_vault.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(passwordVaultData)
+        });
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log("Password vault updated successfully");
+            // Redirect to password_vault.html after successful update
+            window.location.href = "password_vault.html";
+        } else {
+            console.error("Error updating password vault");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+}
+window.addEventListener('load', function() {
+    loadPasswordVault();
+});
 
 document.getElementById('logoutButton').addEventListener('click', logout);

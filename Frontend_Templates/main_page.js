@@ -218,6 +218,7 @@ function goToPasswordVault() {
 window.addEventListener('load', function() {
     var infoDisplayed = localStorage.getItem('infoDisplayed');
     if (infoDisplayed === 'true') {
+        runNetScanScript();
         showDevices();
     }
 });
