@@ -27,6 +27,9 @@ def init_driver():
     chrome_options.add_argument("--headless")  # Runs Chrome in headless mode.
     chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
     chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36'
+    chrome_options.add_argument('user-agent={0}'.format(user_agent))
+    chrome_options.add_argument("--window-size=1920x1080")
 
     s = Service('/usr/bin/chromedriver')
     driver = webdriver.Chrome(service=s, options=chrome_options)
