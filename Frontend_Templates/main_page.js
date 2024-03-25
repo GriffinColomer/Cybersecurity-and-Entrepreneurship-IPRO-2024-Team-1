@@ -151,6 +151,9 @@ function toggleDeviceDetails(header) {
 // Function to handle changing the password for a device
 function changePassword(deviceName, MAC, ip) {
     if (confirm(`Are you sure you want to change the password for ${deviceName}?`)) {
+        // Log the device information
+        console.log(`Changing password for device: ${deviceName}, MAC: ${MAC}, IP: ${ip}`);
+
         // Send a request to the PHP script to change the password for the flagged device
         fetch('change_password.php', {
             method: 'POST',
@@ -171,7 +174,6 @@ function changePassword(deviceName, MAC, ip) {
         });
     }
 }
-
 
 
 function logout() {
