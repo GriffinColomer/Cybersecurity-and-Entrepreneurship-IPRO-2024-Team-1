@@ -78,7 +78,9 @@ document.addEventListener('click', function(event) {
             .then(() => {
                 // Password change request sent, reload the page
                 alert('Password change request sent successfully!');
+
                 location.reload();
+
             })
             .catch(error => {
                 console.error('Error changing password:', error);
@@ -158,18 +160,6 @@ function loadPasswordVault() {
             body: JSON.stringify(passwordVaultData)
         });
     })
-    .then(response => {
-        if (response.ok) {
-            console.log("Password vault updated successfully");
-            // Redirect to password_vault.html after successful update
-            window.location.href = "password_vault.html";
-        } else {
-            console.error("Error updating password vault");
-        }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
 }
 window.addEventListener('load', function() {
     loadPasswordVault();
