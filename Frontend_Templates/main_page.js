@@ -101,7 +101,7 @@ async function showDevices() {
                 <p>Device Accessible: ${device.Accessible ? 'Yes' : 'No'}</p>
                 <p>Device has Password Field: ${device.hasPasswordField ? 'Yes' : 'No'}</p>
                 <p>Password Changed Date: ${device.lastPasswordChange}</p>
-                ${device.Accessible ? `<button onclick="changePassword('${deviceName}','${device.MAC}')">Change Password</button>` : ''}
+                ${device.Accessible ? `<button onclick="changePassword('${deviceName}', '${device.MAC}', '${device.IP}')">Change Password</button>` : ''}
             </div>
         `;
 
@@ -149,7 +149,7 @@ function toggleDeviceDetails(header) {
 }
 
 // Function to handle changing the password for a device
-function changePassword(deviceName, MAC) {
+function changePassword(deviceName, MAC, ip) {
     if (confirm(`Are you sure you want to change the password for ${deviceName}?`)) {
         // Send a request to the PHP script to change the password for the flagged device
         fetch('change_password.php', {
@@ -157,10 +157,11 @@ function changePassword(deviceName, MAC) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ MAC: MAC, password: "" })
+            body: JSON.stringify({ ip: ip })
         })
-        .then(() => {
-            // Password change request sent, no need to wait for response
+        .then(response => response.text())
+        .then(output => {
+            console.log('Python script output:', output);
             alert('Password change request sent successfully!');
             location.reload();
         })

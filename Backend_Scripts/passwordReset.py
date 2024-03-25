@@ -141,7 +141,9 @@ def attempt_login(driver, ip):
         return False
 
 def find_pass_reset_page():
-    driver.save_screenshot("screenshot_loggedin.png")
+    current_datetime = datetime.now().strftime("%m%d_%H%M%S")
+    screenshot_file = f"screenshot_loggedin_{current_datetime}.png"
+    driver.save_screenshot(screenshot_file)
     password_fields = driver.find_elements(By.CSS_SELECTOR, "input[type='password']")
     found_password_fields = False
 
