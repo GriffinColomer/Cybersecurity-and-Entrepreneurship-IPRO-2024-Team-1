@@ -3,7 +3,7 @@
       "IP": "192.168.217.62",
       "MAC": "74:d8:3e:2a:67:23",
       "Company": "Intel Corporate",
-      "flagged": false,
+      "flagged": true,
       "passwordChanged": false,
       "lastPasswordChange": "",
       "Accessible": true
