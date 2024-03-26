@@ -1,7 +1,7 @@
 import requests
-from sys import argv
-from random import randrange
-import json
+import secrets
+import string
+from random import randrangeimport json
 from datetime import datetime
 import json
 import subprocess
@@ -20,12 +20,25 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from password_generator import keyGen
+
+
+def generate_secure_password(length=16, include_uppercase=True, include_numbers=True, include_special_chars=True):
+    # Define character sets
+    lowercase_letters = string.ascii_lowercase
+    uppercase_letters = string.ascii_uppercase if include_uppercase else ""
+    digits = string.digits if include_numbers else ""
+    special_chars = string.punctuation if include_special_chars else ""
+
+    # Combine character sets and create a password
+    all_characters = lowercase_letters + uppercase_letters + digits + special_chars
+    if len(all_characters) == 0:
+        raise ValueError("At least one character set must be included")
+
+    password = ''.join(secrets.choice(all_characters) for _ in range(length))
+    return password
 
 password_field = ''
-passgen = keyGen()
-passgen.minlen = 16
-newpass = passgen.generate()
+newpass = generate_secure_password()
 last_tried_password = ''
 
 
