@@ -307,21 +307,30 @@ button:hover {
     background-color: #2980b9; /* Darker shade of blue on hover */
 }
 
-/* Progress Bar Styles */
-.progress-bar-container {
+#progressBar_container {
     width: 100%;
     height: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    border-radius: 10px;
     overflow: hidden; /* Hide overflow */
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
-.progress-bar {
+#progress-bar {
     height: 100%;
-    background-color: #23a2f6; /* Blue color */
-    border-radius: 5px;
-    transition: width 0.3s; /* Smooth transition for width */
+    padding: 10px;
+    background: linear-gradient(90deg, #42677f, #02562c); /* Gradient from light blue to dark blue */
+    border-radius: 10px;
+    width: 0%; /* Initial width of the progress bar */
+    margin-bottom: 20px;
+    transition: width 0.5s ease; /* Smooth transition for width */
+    animation: progressBarAnimation 2s infinite alternate; /* Animated effect */
 }
+
+
 
 /* Device Section Styles */
 .deviceSections {
@@ -425,6 +434,8 @@ button:hover {
 }
 
 
+
+
 .slider-label {
     color: #ffffff;
     display: block; /* Ensure it's displayed as a block */
@@ -435,11 +446,11 @@ button:hover {
 .switch {
     display: inline-block;
     position: relative;
-    width: 60px;
-    height: 34px;
+    width: 80px; /* Increased width */
+    height: 44px; /* Increased height */
     border: none;
-    margin-bottom: 10px; /* Add margin to bottom of the button */
-    margin-top: 0; /* Remove default margin from top */
+    margin-bottom: 10px;
+    margin-top: 0;
 }
 
 .switch input {
@@ -457,14 +468,14 @@ button:hover {
     bottom: 0;
     background-color: #ccc;
     transition: background-color 0.4s;
-    border-radius: 34px;
+    border-radius: 44px; /* Increased border-radius */
 }
 
 .slider:before {
     content: "";
     position: absolute;
-    height: 26px;
-    width: 26px;
+    height: 36px; /* Increased height */
+    width: 36px; /* Increased width */
     left: 4px;
     bottom: 4px;
     background-color: white;
@@ -493,23 +504,10 @@ input:checked + .slider:before {
 }
 
 .toggleLabel {
-    color: #333333; /* Dark text color */
-}
-#progressBar_container {
-    width: 100%;
-    height: 20px; /* Adjust height as needed */
-    background-color: #f0f0f0; /* Background color of the progress bar container */
-    border-radius: 5px; /* Rounded corners */
-    margin-bottom: 10px; /* Adjust margin as needed */
+    color: #333333;
+    font-size: 20px;
 }
 
-#progress-bar {
-    height: 100%;
-    background-color: #146206; /* Color of the progress bar */
-    width: 0%; /* Initial width of the progress bar */
-    border-radius: 5px; /* Rounded corners */
-    transition: width 0.3s ease; /* Smooth transition effect */
-}
 
 
 
