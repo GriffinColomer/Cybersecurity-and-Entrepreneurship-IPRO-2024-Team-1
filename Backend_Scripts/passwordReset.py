@@ -298,7 +298,7 @@ def update_deviceLog_date(macaddress):
         file.close()
     except:
         pass
-    data[macaddress] = {'date_changed': datetime.datetime.now().strftime('%c')}
+    data[macaddress] = {'date_changed': datetime.now().strftime('%c')}
     json_out = json.dumps(data, indent=3)
     with open('../Backend_Scripts/deviceLog.json', 'w') as output:
         output.write(json_out)
