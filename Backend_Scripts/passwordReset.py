@@ -27,7 +27,7 @@ def generate_secure_password(length=16, include_uppercase=True, include_numbers=
     lowercase_letters = string.ascii_lowercase
     uppercase_letters = string.ascii_uppercase if include_uppercase else ""
     digits = string.digits if include_numbers else ""
-    special_chars = string.punctuation if include_special_chars else ""
+    special_chars = "!@#$%^&*" if include_special_chars else ""
 
     # Combine character sets and create a password
     all_characters = lowercase_letters + uppercase_letters + digits + special_chars
