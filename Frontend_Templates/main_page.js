@@ -101,7 +101,7 @@ async function showDevices() {
                 <p>Device Accessible: ${device.Accessible ? 'Yes' : 'No'}</p>
                 <p>Device has Password Field: ${device.hasPasswordField ? 'Yes' : 'No'}</p>
                 <p>Password Changed Date: ${device.lastPasswordChange}</p>
-                ${device.Accessible ? `<button onclick="changePassword('${deviceName}', '${device.MAC}', '${device.IP}')">Change Password</button>` : ''}
+                ${device.flagged ? `<button onclick="changePassword('${deviceName}', '${device.MAC}', '${device.IP}')">Change Password</button>` : ''}
             </div>
         `;
 

@@ -35,9 +35,14 @@ async function showDevices() {
                             </p>
                         </div>
                         ` : `
+                            ${!device.flagged ?`
                             <input type="password" placeholder="Enter your current password" id="passwordInput-${deviceName}">
                             <button class="changePasswordBtn" data-device-name="${deviceName}" data-device-mac="${device.MAC}" data-device-IP="${device.IP}">Change Password</button>
+                    `:`
+                            <button class="changePasswordBtn" data-device-name="${deviceName}" data-device-mac="${device.MAC}" data-device-IP="${device.IP}">Change Password</button>
                     `}
+                    
+                `}
             </div>
             `;
 
