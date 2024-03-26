@@ -5,6 +5,6 @@ $requestData = json_decode($requestBody, true);
 $deviceMAC = isset($requestData['MAC']) ? $requestData['MAC'] : '';
 $deviceIP = isset($requestData['IP']) ? $requestData['IP'] : '';
 $devicePassword = isset($requestData['password']) ? $requestData['password'] : '';
-$output = shell_exec("sudo python ../Backend_Scripts/password_controller.py $deviceMAC $deviceIP $devicePassword");
+$output = shell_exec("sudo python ../Backend_Scripts/passwordReset.py $deviceIP $deviceMAC");
 
 ?>
