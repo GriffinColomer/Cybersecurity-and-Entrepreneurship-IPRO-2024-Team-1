@@ -36,7 +36,7 @@ async function showDevices() {
                         </div>
                     ` : `
                         <input type="password" placeholder="Enter password" id="passwordInput-${deviceName}">
-                        <button class="changePasswordBtn" data-device-name="${deviceName}" data-device-mac="${device.MAC}">Change Password</button>
+                        <button class="changePasswordBtn" data-device-name="${deviceName}" data-device-mac="${device.MAC}" data-device-IP="${device.IP}>Change Password</button>
                     `}
             </div>
             `;
@@ -62,6 +62,8 @@ document.addEventListener('click', function(event) {
         const deviceMAC = event.target.dataset.deviceMac;
         const passwordInput = document.getElementById(`passwordInput-${deviceName}`);
         const newPassword = passwordInput.value.trim();
+        const deviceIP = event.target.dataset.deviceIp;
+
         
         if (newPassword !== '') {
             // Send password change request
@@ -72,7 +74,8 @@ document.addEventListener('click', function(event) {
                 },
                 body: JSON.stringify({
                     MAC: deviceMAC,
-                    password: newPassword
+                    password: newPassword,
+                    IP: deviceIP
                 })
             })
             .then(() => {

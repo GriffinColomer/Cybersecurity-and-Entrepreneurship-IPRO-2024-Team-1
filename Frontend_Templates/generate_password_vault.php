@@ -88,6 +88,7 @@ print_r($macPasswords);
 foreach ($localIPData as $deviceName => $deviceInfo) {
     // Check if the device company exists in the login data
     $companyName = $deviceInfo['Company'];
+    $IP = $deviceInfo['IP'];
     foreach ($loginData as $login) {
         if ($login['company'] === $companyName) {
             $username = $login['username'];
@@ -110,7 +111,7 @@ foreach ($localIPData as $deviceName => $deviceInfo) {
     }else{
         $password = "";
     }
-
+    
     // Add the device to the password vault with retrieved username
     $passwordVault[$deviceName] = array(
         'Company' => $deviceInfo['Company'],
@@ -118,6 +119,7 @@ foreach ($localIPData as $deviceName => $deviceInfo) {
         'defaultPassword' => $defaultPassword,
         'Username' => $username,
         'Password' => $password,
+        'IP' => $IP, 
         'PasswordChanged' => $passwordChanged,
         'flagged' => $deviceInfo['flagged']
     );

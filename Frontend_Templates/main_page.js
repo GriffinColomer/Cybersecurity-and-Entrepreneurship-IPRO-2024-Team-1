@@ -155,12 +155,12 @@ function changePassword(deviceName, MAC, ip) {
         console.log(`Changing password for device: ${deviceName}, MAC: ${MAC}, IP: ${ip}`);
 
         // Send a request to the PHP script to change the password for the flagged device
-        fetch('automatic_change_password.php', {
+        fetch('change_password.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ ip: ip })
+            body: JSON.stringify({MAC: MAC,password: "", ip: ip })
         })
         .then(response => response.text())
         .then(output => {
