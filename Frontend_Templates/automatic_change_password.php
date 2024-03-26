@@ -18,11 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Store the new password in a JSON file
     $passwords = [];
-    if (file_exists('passwords.json')) {
+    if (file_exists('auto_saved_passwords.json')) {
         $passwords = json_decode(file_get_contents('auto_saved_passwords.json'), true);
     }
     $passwords[$ip] = $result['new_password'];
-    file_put_contents('passwords.json', json_encode($passwords, JSON_PRETTY_PRINT));
+    file_put_contents('auto_saved_passwords.json', json_encode($passwords, JSON_PRETTY_PRINT));
 
     // Log the stored password
     error_log("Stored password for IP " . $ip . ": " . $result['new_password']);
