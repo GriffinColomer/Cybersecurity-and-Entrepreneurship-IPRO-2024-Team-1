@@ -1,4 +1,7 @@
 import requests
+from sys import argv
+from random import randrange
+import json
 from datetime import datetime
 import json
 import subprocess
@@ -17,11 +20,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from password_generator import keyGen
 
 password_field = ''
-
-newpass = ''
+passgen = keyGen()
+passgen.minlen = 16
+newpass = passgen.generate()
 last_tried_password = ''
+
 
 def init_driver():
     chrome_options = Options()
@@ -46,9 +52,9 @@ def attempt_login(driver, ip):
         print("made it to the actual router page")
         potential_passwords = ["pass", "pass1", "IPROSECURE", "IPROsecure", "Password123"]
         potential_usernames = ["admin", "user", "student"]
-        
+
         password_field = driver.find_element(By.CSS_SELECTOR, "input[type='password']")
-        
+
         # Try different methods to find the login button
         login_button = None
         login_button_selectors = [
@@ -58,18 +64,18 @@ def attempt_login(driver, ip):
             "//button[contains(text(), 'og')]",
             "//input[@type='submit']"
         ]
-        
+
         for selector in login_button_selectors:
             try:
                 login_button = driver.find_element(By.XPATH, selector)
                 break
             except NoSuchElementException:
                 pass
-        
+
         if login_button is None:
             print("Login button not found.")
             return False
-        
+
         # Check if username field exists
         try:
             for username in potential_usernames:
@@ -77,17 +83,18 @@ def attempt_login(driver, ip):
                 username_field.clear()
                 for password in potential_passwords:
                     try:
-                        username_field = driver.find_element(By.CSS_SELECTOR, "input[type='text'], input[type='username']")
+                        username_field = driver.find_element(By.CSS_SELECTOR,
+                                                             "input[type='text'], input[type='username']")
                         username_field.clear()
                         login_button = driver.find_element(By.XPATH, selector)
-                        
+
                         username_field.send_keys(username)
                         password_field = driver.find_element(By.CSS_SELECTOR, "input[type='password']")
                         password_field.clear()
                         password_field.send_keys(password)
                         login_button.click()
                         last_tried_password = password
-                        
+
                         # Check for the presence of the popup
                         try:
                             WebDriverWait(driver, 1).until(EC.alert_is_present())
@@ -97,7 +104,8 @@ def attempt_login(driver, ip):
                         except TimeoutException:
                             # Check for the presence of a password field after the login attempt
                             try:
-                                WebDriverWait(driver, 1).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[type='password']")))
+                                WebDriverWait(driver, 1).until(
+                                    EC.presence_of_element_located((By.CSS_SELECTOR, "input[type='password']")))
                                 print(f"Failed with username: {username} and password: {password}")
                             except TimeoutException:
                                 print(f"Success with username: {username} and password: {password}")
@@ -113,7 +121,7 @@ def attempt_login(driver, ip):
                     password_field.send_keys(password)
                     login_button.click()
                     last_tried_password = password
-                    
+
                     # Check for the presence of the popup
                     try:
                         WebDriverWait(driver, 3).until(EC.alert_is_present())
@@ -123,7 +131,8 @@ def attempt_login(driver, ip):
                     except TimeoutException:
                         # Check for the presence of a password field after the login attempt
                         try:
-                            WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[type='password']")))
+                            WebDriverWait(driver, 3).until(
+                                EC.presence_of_element_located((By.CSS_SELECTOR, "input[type='password']")))
                             print(f"Failed with password: {password}")
                         except TimeoutException:
                             print(f"Success with password: {password}")
@@ -138,6 +147,7 @@ def attempt_login(driver, ip):
     except Exception as e:
         print(f"An error occurred while attempting to log in to {ip}: {e}")
         return False
+
 
 def find_pass_reset_page():
     current_datetime = datetime.now().strftime("%m%d_%H%M%S")
@@ -168,7 +178,8 @@ def find_pass_reset_page():
         password_fields = driver.find_elements(By.CSS_SELECTOR, "input[type='password']")
         if len(password_fields) > 0:
             found_password_fields = True
-            WebDriverWait(driver, 1).until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "input[type='password']")))
+            WebDriverWait(driver, 1).until(
+                EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "input[type='password']")))
             reset_password()
         else:
             # Wait a bit before trying again
@@ -182,8 +193,6 @@ def reset_password():
     global last_tried_password
     sleep(0.2)
     oldpass = last_tried_password
-    global newpass
-    newpass = "IPRO123"
     password_fields = driver.find_elements(By.CSS_SELECTOR, "input[type='password']")
 
     oldused = False
@@ -194,12 +203,10 @@ def reset_password():
             pass
         else:
             password_input.send_keys(newpass)
-    
+
     current_datetime = datetime.now().strftime("%m%d_%H%M%S")
     screenshot_file = f"screenshot_passinserted_{current_datetime}.png"
     driver.save_screenshot(screenshot_file)
-    sleep(15)
-
 
 
 def find_clickable_ancestor_and_click(start_element_xpath):
@@ -240,8 +247,10 @@ def find_clickable_ancestor_and_click(start_element_xpath):
     return False
 
 
-#pass in an ip and it will try to change the password
+# pass in an ip and it will try to change the password
 driver = init_driver()
+
+
 def auto_reset_pass(ip):
     print("Method has begun to try to reset password of ", ip)
     if attempt_login(driver, ip):
@@ -250,10 +259,44 @@ def auto_reset_pass(ip):
     return json.dumps({"new_password": newpass})
 
 
+def write_password(macaddress, password):
+    updated = False
+    with open("../Backend_Scripts/passwords", "r") as file:
+        lines = file.readlines()
+
+    with open("../Backend_Scripts/passwords", "w") as file:
+        for line in lines:
+            parts = line.strip().split(", ")
+            if parts[0] == macaddress:
+                file.write(f"{macaddress}, {password}\n")
+                updated = True
+            else:
+                file.write(line)
+
+        if not updated:
+            file.write(f"{macaddress}, {password}\n")
+
+
+def update_deviceLog_date(macaddress):
+    data = {}
+    try:
+        file = open('../Backend_Scripts/deviceLog.json')
+        data = json.load(file)
+        file.close()
+    except:
+        pass
+    data[macaddress] = {'date_changed': datetime.datetime.now().strftime('%c')}
+    json_out = json.dumps(data, indent=3)
+    with open('../Backend_Scripts/deviceLog.json', 'w') as output:
+        output.write(json_out)
+
+
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         ip = sys.argv[1]
+        macaddress = sys.argv[2]
         result = auto_reset_pass(ip)
-        print(result)
+        write_password(macaddress, newpass)
+        update_deviceLog_date(macaddress)
     else:
         print("Please provide an IP address as a command-line argument.")
