@@ -149,10 +149,10 @@ function toggleDeviceDetails(header) {
 }
 
 // Function to handle changing the password for a device
-function changePassword(deviceName, MAC, ip) {
+function changePassword(deviceName, MAC, IP) {
     if (confirm(`Are you sure you want to change the password for ${deviceName}?`)) {
         // Log the device information
-        console.log(`Changing password for device: ${deviceName}, MAC: ${MAC}, IP: ${ip}`);
+        console.log(`Changing password for device: ${deviceName}, MAC: ${MAC}, IP: ${IP}`);
 
         // Send a request to the PHP script to change the password for the flagged device
         fetch('change_password.php', {
@@ -160,7 +160,7 @@ function changePassword(deviceName, MAC, ip) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({MAC: MAC,password: "", ip: ip })
+            body: JSON.stringify({MAC: MAC, IP: IP })
         })
         .then(response => response.text())
         .then(output => {
