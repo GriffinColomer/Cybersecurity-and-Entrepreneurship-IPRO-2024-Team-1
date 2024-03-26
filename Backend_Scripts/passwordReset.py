@@ -221,15 +221,10 @@ def reset_password():
     screenshot_file = f"screenshot_passinserted_{current_datetime}.png"
     driver.save_screenshot(screenshot_file)
 
-    # Try different methods to find the save password button
     savePassword = None
     save_button_selectors = [
         "//button[contains(text(), 'Save')]",
         "//button[contains(text(), 'Apply')]",
-        "//button[contains(text(), 'AVE')]",
-        "//button[contains(text(), 'ave')]",
-        "//button[contains(text(), 'pply')]",
-        "//button[contains(text(), 'PPLY')]",
         "//input[@type='submit']"
     ]
 
