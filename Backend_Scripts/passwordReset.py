@@ -274,10 +274,10 @@ def auto_reset_pass(ip):
 
 def write_password(macaddress, password):
     updated = False
-    with open("../Backend_Scripts/passwords", "r") as file:
+    with open("../../passwords", "r") as file:
         lines = file.readlines()
 
-    with open("../Backend_Scripts/passwords", "w") as file:
+    with open("../../passwords", "w") as file:
         for line in lines:
             parts = line.strip().split(", ")
             if parts[0] == macaddress:
