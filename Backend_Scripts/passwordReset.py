@@ -221,6 +221,31 @@ def reset_password():
     screenshot_file = f"screenshot_passinserted_{current_datetime}.png"
     driver.save_screenshot(screenshot_file)
 
+    # Try different methods to find the save password button
+    savePassword = None
+    save_button_selectors = [
+        "//button[contains(text(), 'Save')]",
+        "//button[contains(text(), 'Apply')]",
+        "//button[contains(text(), 'AVE')]",
+        "//button[contains(text(), 'ave')]",
+        "//button[contains(text(), 'pply')]",
+        "//button[contains(text(), 'PPLY')]",
+        "//input[@type='submit']"
+    ]
+
+    for selector in save_button_selectors:
+        try:
+            save_password_button = driver.find_element(By.XPATH, selector)
+            break
+        except NoSuchElementException:
+            pass
+
+    if savePassword is None:
+        print("save password button not found.")
+        return False
+
+    save_password_button.click()
+
 
 def find_clickable_ancestor_and_click(start_element_xpath):
     max_attempts = 6  # Prevents infinite loops
