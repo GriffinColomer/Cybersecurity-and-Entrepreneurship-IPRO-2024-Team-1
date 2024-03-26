@@ -221,7 +221,7 @@ def reset_password():
     screenshot_file = f"screenshot_passinserted_{current_datetime}.png"
     driver.save_screenshot(screenshot_file)
 
-    savePassword = None
+    save_password_button = None
     save_button_selectors = [
         "//button[contains(text(), 'Save')]",
         "//button[contains(text(), 'Apply')]",
@@ -235,7 +235,7 @@ def reset_password():
         except NoSuchElementException:
             pass
 
-    if savePassword is None:
+    if save_password_button is None:
         print("save password button not found.")
         return False
 
