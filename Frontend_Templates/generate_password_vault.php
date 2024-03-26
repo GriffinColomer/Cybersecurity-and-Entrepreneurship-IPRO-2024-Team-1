@@ -4,7 +4,7 @@
 $localIPFile =  "../Backend_Scripts/localIP.json";
 $passwordVaultFile = "password_vault.json";
 $DatabaseFile = "login_data.json";
-$passwordFile = "../Backend_Scripts/passwords";
+$passwordFile = "../../passwords";
 
 // Function to read MAC addresses and passwords from a file
 function readPasswordsFromFile($filename) {
