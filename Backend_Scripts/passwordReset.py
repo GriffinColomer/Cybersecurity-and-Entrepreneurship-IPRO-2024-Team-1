@@ -1,7 +1,7 @@
 import requests
 import secrets
 import string
-from random import randrangeimport json
+from random import randrange
 from datetime import datetime
 import json
 import subprocess
